@@ -1,0 +1,131 @@
+each student has base stats:
+1. flexibility
+2. athleticism
+3. agility
+4. strength
+5. stamina / cardio
+6. weight class / physique
+
+and skill(?) stats:
+1. kicking 
+2. striking
+3. holds
+4. grappling
+5. forms
+
+You can know how to kick wthout being very flexible, but not being very
+flexible may put a cap on your kicking skill, same with striking & 
+athleticism. Strength affects all skill stats except forms and holds
+Weight class provides natural caps for kicking, striking etc. etc. Agility
+affects kicking, forms
+
+Misc. physical stats:
+1. Fatigue (high fatigue may lead to injury)
+
+Hidden / personality stats:
+1. Motivation (if it gets low, the student might leave, if it remains high 
+for a long time, the student might get a loyalty status ???)
+2. Personality (determines when motivation goes up or down)
+3. Destiny values for stats (natural affinity and potential for physical stats)
+4. Teaching
+
+Game flow:
+Advertise -> gradually gain new students who pay a monthly fee -> 
+choose focus for each training session / each week -> students get better ->
+exam to get new belt / participate in martial arts events -> students may
+eventually leave -> new students
+
+Long time students who have a high rank belt will teach lower ranks to
+help them become better through their teaching skill
+
+
+
+
+
+Aspri, Misi Kitrini, Kitrini, Misi Prasini, Prasini, Misi Mple, Mple, Misi
+Kokkini, Kokkini, Misi Mavri
+5,5 xronia!
+
+
+
+1. generic student generation caps
+-----------------------------------
+
+agility     16-30       31-45       45-61
+=========================================
+VSmall  |   10-40        0-25        0-10
+Small   |   10-40        0-25        0-10
+Light   |    0-30        0-20        0-10
+Middle  |    0-30        0-20        0-10
+LHeavy  |    0-30        0-20        0-10
+Heavy   |    0-20        0-10        0-5
+SHeavy  |    0-20        0-10        0-5
+=========================================
+
+
+stamina     16-30       31-45       45-61
+=========================================
+VSmall  |   20-50        0-40        0-10
+Small   |   20-50        0-40        0-10
+Light   |   10-40        0-30        0-5
+Middle  |   10-40        0-30        0-5
+LHeavy  |   10-40        0-30        0-5
+Heavy   |    0-30        0-20        0-5
+SHeavy  |    0-30        0-20        0-5
+=========================================
+
+
+flexiblity  16-30       31-45       45-61
+=========================================
+VSmall  |    0-30        0-20        0-10
+Small   |    0-30        0-20        0-10
+Light   |    0-20        0-10        0-5
+Middle  |    0-20        0-10        0-5
+LHeavy  |    0-20        0-10        0-5
+Heavy   |    0-10        0-5         0-5
+SHeavy  |    0-10        0-5         0-5
+=========================================
+
+
+strength    16-30       31-45       45-61
+=========================================
+VSmall  |    0-30        0-40        0-20
+Small   |    0-30        0-40        0-20
+Light   |    0-40       20-50        0-30
+Middle  |    0-40       20-50        0-30
+LHeavy  |    0-40       20-50        0-30
+Heavy   |   30-60       40-70       20-50
+SHeavy  |   30-60       40-70       20-50
+=========================================
+
+
+
+2. progression of stats
+-------------------------
+Each time a student trains on a physical stat, he gains a clear 0.1 point before the modifiers. 
+Modifiers are his hidden destiny value (affinity for the given field) in a percentage
+and an age coefficient which is calculated by this formula (and later a training focus
+modifier):
+
+        current_age^2 
+100% - ---------------
+        10000 - 256 
+
+So each time a student trains in a specific field they gain:
+
+destiny_value_coefficient = ((destiny_value - (current_value - 20)) / 100)
+age_coefficient = (1 - (current_age - 16) / 100 )))
+random_coefficient = 0-1.2f
+training focus coefficient
+point * destiny_value_coefficient * age_coefficient * training_coefficient * random_coefficient
+
+                0-40    41-75   76-100
+agility     |    1       0.1     0.01
+stamina     |    1       0.1     0.01
+flexibility |    1       0.1     0.01
+strength    |    1       0.1     0.01
+
+
+Skill stats: 
+
+point * ((destiny_value - (current_value - 20)) / 100) * (1 - ((current_age - 16)^2 / 100^2))

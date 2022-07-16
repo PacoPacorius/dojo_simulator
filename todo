@@ -1,0 +1,39 @@
+#define Very Small ( < 40 kg)
+        Small (41-55kg)
+        Lightweight (56-70kg)
+        Middleweight (71-80kg)
+        Light Heavyweight (81-95kg)
+        Heavyweight (96-110kg)
+        Super Heavyweight ( > 111kg)
+        
+
+student struct{
+    float holds (0-100)
+    float striking (0-100)
+    float kicking (0-100)
+
+    float cardio (0-100)
+    float agility (0-100)
+    float strength (0-100)
+    float flexibility (0-100)
+
+    int weight_class
+
+    float motivation (0-100)
+    }
+    
+    
+generate some workers done
+
+decide generation stat caps done
+generate physical stats done
+
+hidden destiny values -how do they work?
+they are percentages
+
+
+student growth
+
+destiny values generation
+
+
