@@ -32,8 +32,14 @@ hidden destiny values -how do they work?
 they are percentages
 
 
-student growth
+student growth -done
 
 destiny values generation
 
+split main.c into multiple files -how?
+generation is one file, main.c another
+
+first school - train 5 students at the same time
+
+training focus
 

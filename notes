@@ -102,6 +102,7 @@ SHeavy  |   30-60       40-70       20-50
 
 2. progression of stats
 -------------------------
+Physical stats;
 Each time a student trains on a physical stat, he gains a clear 0.1 point before the modifiers. 
 Modifiers are his hidden destiny value (affinity for the given field) in a percentage
 and an age coefficient which is calculated by this formula (and later a training focus
@@ -117,15 +118,35 @@ destiny_value_coefficient = ((destiny_value - (current_value - 20)) / 100)
 age_coefficient = (1 - (current_age - 16) / 100 )))
 random_coefficient = 0-1.2f
 training focus coefficient
-point * destiny_value_coefficient * age_coefficient * training_coefficient * random_coefficient
-
-                0-40    41-75   76-100
-agility     |    1       0.1     0.01
-stamina     |    1       0.1     0.01
-flexibility |    1       0.1     0.01
-strength    |    1       0.1     0.01
+physical stat increase = point * destiny_value_coefficient * age_coefficient * training_coefficient * random_coefficient -no age coefficent, implement decline, no random coefficient, not necessary
 
 
 Skill stats: 
+destiny_value_coefficient = ((destiny_value - (current_value - 20)) / 100)
+training focus coefficient
+physical stat dependence coeffiecient = physical stat / (skill stat + 20)
+or if they depend on more than one physical stats: 1 / {number_of_stats} * physical stats / (skill stat + 20)
+dependence on multiple stats can be weighted with coefficients, if n coefficients are less than 1, then {new_number_of_stats} = {number_of_stats} - n
 
-point * ((destiny_value - (current_value - 20)) / 100) * (1 - ((current_age - 16)^2 / 100^2))
+skill stat increase = point * destiny_value_coefficient * dependence_coefficient * training_coefficient (* random coefficient? could work, but not really necessary, not as useless as it would havve been in physical stats. though)
+
+Is there really a point for having destiny values for skill stats if they are influenced by destiny values of physical skills? defineitely if skill stat not depndent on other stat
+
+
+3. destiny value generation
+----------------------------
+Random with normal distribution
+
+body types may add a small bonus or penalty to certain physical skills
+
+
+          Agility       Strength        Flexibility         Stamina
+==================================================================== 
+VSmall |  +0-10          -0-20            +0-20              +0-10 | 
+Small  |  +0-5           -0-10            +0-10              +0-5  | 
+Light  |   0-0           -0-5              0-0                0-0  |  
+Middle |   0-0           +5--5             0-0                0-0  |  
+LHeavy |   0-0           +0-5              0-0                0-0  |   
+Heavy  |  -0-5           +0-10            -0-10              -0-5  |    
+SHeavy |  -0-10          +0-20            -0-20              -0-10 |   
+====================================================================
