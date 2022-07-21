@@ -1,10 +1,11 @@
-#Dojo simulator! 
+# Dojo simulator! 
 
 Train students! Participate in events! Challenge other dojos! Handle big egos and drama! Have the best martial arts school in the world! NEVER GIVE UP YOUR WAYYYYYY!!!!!
 
 I haven't done much yet but it will get there eventually (and hopefully)
 
-##kind-of wiki of things currently implemented
+## kind-of wiki of things currently implemented
+
 each student has base stats:
 1. flexibility
 2. athleticism
@@ -59,7 +60,7 @@ Kokkini, Kokkini, Misi Mavri
 -----------------------------------
 
 agility     16-30       31-45       45-61
-=========================================
+_________________________________________
 VSmall  |   10-40        0-25        0-10
 Small   |   10-40        0-25        0-10
 Light   |    0-30        0-20        0-10
@@ -67,11 +68,11 @@ Middle  |    0-30        0-20        0-10
 LHeavy  |    0-30        0-20        0-10
 Heavy   |    0-20        0-10        0-5
 SHeavy  |    0-20        0-10        0-5
-=========================================
+__________________________________________
 
 
 stamina     16-30       31-45       45-61
-=========================================
+__________________________________________
 VSmall  |   20-50        0-40        0-10
 Small   |   20-50        0-40        0-10
 Light   |   10-40        0-30        0-5
@@ -79,11 +80,11 @@ Middle  |   10-40        0-30        0-5
 LHeavy  |   10-40        0-30        0-5
 Heavy   |    0-30        0-20        0-5
 SHeavy  |    0-30        0-20        0-5
-=========================================
+__________________________________________
 
 
 flexiblity  16-30       31-45       45-61
-=========================================
+_________________________________________
 VSmall  |    0-30        0-20        0-10
 Small   |    0-30        0-20        0-10
 Light   |    0-20        0-10        0-5
@@ -91,11 +92,11 @@ Middle  |    0-20        0-10        0-5
 LHeavy  |    0-20        0-10        0-5
 Heavy   |    0-10        0-5         0-5
 SHeavy  |    0-10        0-5         0-5
-=========================================
+_________________________________________
 
 
 strength    16-30       31-45       45-61
-=========================================
+_________________________________________
 VSmall  |    0-30        0-40        0-20
 Small   |    0-30        0-40        0-20
 Light   |    0-40       20-50        0-30
@@ -103,7 +104,7 @@ Middle  |    0-40       20-50        0-30
 LHeavy  |    0-40       20-50        0-30
 Heavy   |   30-60       40-70       20-50
 SHeavy  |   30-60       40-70       20-50
-=========================================
+_________________________________________
 
 
 
