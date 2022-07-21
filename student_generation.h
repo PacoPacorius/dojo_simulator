@@ -45,12 +45,14 @@ struct Student {
 };
 
 int rand_lim(int limit);
-void print_worker_stats(struct Student student);
-struct Student generate_student();
+double get_gaussdist_number(int lower_lim, int upper_lim);
+
+struct Student generate_student(char* new_name);
 int generate_weight_class();
 int generate_agility(int weight_class, int age);
 int generate_strength(int weight_class, int age);
 int generate_flexibility(int weight_class, int age);
 int generate_stamina(int weight_class, int age);
+void generate_destiny_values(struct Student* stud);
 
 #endif

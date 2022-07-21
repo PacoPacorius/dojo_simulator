@@ -142,11 +142,34 @@ body types may add a small bonus or penalty to certain physical skills
 
           Agility       Strength        Flexibility         Stamina
 ==================================================================== 
-VSmall |  +0-10          -0-20            +0-20              +0-10 | 
-Small  |  +0-5           -0-10            +0-10              +0-5  | 
+VSmall |  +0-10          -0-15            +0-10              +0-10 | 
+Small  |  +0-5           -0-10            +0-5               +0-5  | 
 Light  |   0-0           -0-5              0-0                0-0  |  
 Middle |   0-0           +5--5             0-0                0-0  |  
 LHeavy |   0-0           +0-5              0-0                0-0  |   
-Heavy  |  -0-5           +0-10            -0-10              -0-5  |    
-SHeavy |  -0-10          +0-20            -0-20              -0-10 |   
+Heavy  |  -0-5           +0-10            -0-5               -0-5  |    
+SHeavy |  -0-10          +0-15            -0-10              -0-10 |   
 ====================================================================
+
+
+4. training focus
+------------------
+General training: x1 modifier to everything
+Focus on e.g. kicking: x1.5 modifier on kicking, x0.5 modifier on everything else
+
+Focus is applied on one week only, on all three training sessions
+
+Focus will affect student motivation depending on their personality. Some students 
+might like kicking focus, cardio, or higher intensity training and if you go too
+long without their preference they will lose motivation.
+
+
+5. training intensity
+----------------------
+low intensity: x0.75 modifier to all stat gains
+medium intensity: x1 modifier to all stat gains
+high intensity: x1.25 modifier to all stat gains
+
+Intensity will affect student motivation depending on morale. High intensity
+training will also increase student fatigue quicker and will increase risk 
+of injury

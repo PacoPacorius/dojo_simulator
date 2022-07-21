@@ -1,18 +1,17 @@
 #include <stdlib.h>
 #include <assert.h>
+#include <math.h>
 
 #include "student_generation.h"
-#include "student.h"
 
-struct Student generate_student(){
+struct Student generate_student(char* new_name){
     struct Student temp;
-    temp.name = "Mungdango";
+    temp.name = new_name;
 
     /* generate age */
     temp.age = rand_lim(45) + 16;
 
     /* generate weight class */
-    
     temp.weight_class = generate_weight_class();
 
     /* physical stats (0-100) */
@@ -33,15 +32,7 @@ struct Student generate_student(){
     temp.motivation = 100;
 
     /* hidden stats (0-100) */
-    int yooo = 70;
-    temp.destiny_stamina     =   yooo;
-    temp.destiny_agility     =   yooo;
-    temp.destiny_strength    =   yooo;
-    temp.destiny_flexibility =   yooo;
-
-    temp.destiny_striking    =   yooo;
-    temp.destiny_kicking     =   yooo;
-    temp.destiny_holds       =   yooo;
+    generate_destiny_values(&temp);
 
     return temp;
 }
@@ -261,4 +252,35 @@ int generate_strength(int weight_class, int age){
     }
 
     return r;
+}
+
+void generate_destiny_values(struct Student* stud){
+    stud->destiny_agility = get_gaussdist_number(30, 100);
+    stud->destiny_flexibility = get_gaussdist_number(30, 100);
+    stud->destiny_strength = get_gaussdist_number(30, 100);
+    stud->destiny_stamina = get_gaussdist_number(30, 100);
+
+    stud->destiny_striking = get_gaussdist_number(30, 100);
+    stud->destiny_kicking = get_gaussdist_number(30, 100);
+    stud->destiny_holds = get_gaussdist_number(30, 100);
+    
+    /* add body type bonuses / penalties */
+}
+
+double get_gaussdist_number(int lower_lim, int upper_lim){
+    double gaussian_num = -1.0;
+    double uniform_nums;
+    double uniform_numu;
+    int uniform_number;
+
+    /* Box-Muller transform */
+    while(gaussian_num < lower_lim || gaussian_num > upper_lim){
+        uniform_nums = (double)rand_lim(RAND_MAX - 1) / RAND_MAX;
+        uniform_numu = (double)rand_lim(RAND_MAX - 1) / RAND_MAX;
+
+        gaussian_num = sqrt(-2*log(uniform_numu))*cos(2*M_PI*uniform_nums);
+        gaussian_num *= 60;
+    }
+
+    return gaussian_num;
 }

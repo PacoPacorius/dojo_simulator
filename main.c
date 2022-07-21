@@ -3,43 +3,70 @@
 #include <stdlib.h>
 
 #include "student_generation.h"
-#include "student.h"
 
 void increase_physical_stats(struct Student* stud);
 void increase_skill_stats(struct Student* stud);
+void print_student_stats(struct Student student);
 
 int main(){
     int i, weeks, months, years;
+    int number_of_students = 5;
     char c;
-    struct Student student;
+    struct Student stud_muffin[5];
     srand((unsigned int)time(NULL));
-    student = generate_student();
+        stud_muffin[0] = generate_student("John Doe");
+        stud_muffin[1] = generate_student("Jane Doe");
+        stud_muffin[2] = generate_student("Big Bruiser Findlay");
+        stud_muffin[3] = generate_student("Commander Kawagishi");
+        stud_muffin[4] = generate_student("Fujio Narahashi");
+    for(i = 0; i < 5; i++){ 
+        print_student_stats(stud_muffin[i]);
+    }
 
 
-    print_worker_stats(student);
 
     weeks = 0;
     months = 0;
     years = 0;
-    while(1){
-        for(i = 0; i < 4; i++){
-            c = getchar();
+    while(c != 'q'){
+        c = getchar();
+        switch(c){
+            case '\n':
+            printf("\nWeeks/Months/Years passed: %d/%d/%d", weeks, months, years);
+            printf("\n1. Advance 1 Week");
+            printf("\n2. Show your students' stats");
+            printf("\nQuit\n");
+            printf("\nWhat do? ");
+            break;
+            case '1':
             weeks++;
-            printf("Weeks/Months/Years passed: %d/%d/%d", weeks, months, years);
             int j = 0;
             while(j < 3){
-                increase_physical_stats(&student);
-                increase_skill_stats(&student);
+                for(i = 0; i < 5; i++){
+                    increase_physical_stats(&stud_muffin[i]);
+                    increase_skill_stats(&stud_muffin[i]);
+                }
                 j++;
             }
+            break;
+            case '2':
+            do{
+                c = getchar();
+                printf("\nWhich student?");
+            } while(c < '0' || c > number_of_students - 1 + '0');
+            i = c - '0';
+            print_student_stats(stud_muffin[i]);
+            break;
+
         }
-        print_worker_stats(student);
-        months++;
-        weeks = 0;
+        if(weeks == 5){
+            months++;
+            weeks = 0;
+        }
         if(months == 12){
             months = 0;
             years++;
-            student.age++;
+            for(i = 0; i < 5; i++) stud_muffin[i].age++;
         }
 
         printf("\n");
@@ -48,24 +75,24 @@ int main(){
     return 0;
 }
 
-void print_worker_stats(struct Student student){
+void print_student_stats(struct Student student){
     printf("\n");
     printf("\n");
     printf("Name: %s", student.name);
-    printf("\tAge: %i", student.age);
+    printf("\t\tAge: %i", student.age);
     printf("\n");
 
     printf("\nSkill Stats: ");
-    printf("\nHolds: %f", student.holds);
-    printf("\nStriking: %f", student.striking);
-    printf("\nKicking: %f", student.kicking);
+    printf("\nStriking: %f\t\tPotential: %d", student.striking, student.destiny_striking);
+    printf("\nKicking: %f\t\tPotential: %d", student.kicking, student.destiny_kicking);
+    printf("\nHolds: %f\t\t\tPotential: %d", student.holds, student.destiny_holds);
     printf("\n");
 
     printf("\nPhysical Stats: ");
-    printf("\nAgility: %f", student.agility);
-    printf("\nStrength: %f", student.strength);
-    printf("\nFlexibility: %f", student.flexibility);
-    printf("\nStamina: %f", student.stamina);
+    printf("\nAgility: %f\t\tPotential: %d", student.agility, student.destiny_agility);
+    printf("\nStrength: %f\t\tPotential: %d", student.strength, student.destiny_strength);
+    printf("\nFlexibility: %f\t\tPotential: %d", student.flexibility, student.destiny_flexibility);
+    printf("\nStamina: %f\t\tPotential: %d", student.stamina, student.destiny_stamina);
     printf("\n");
 
     printf("\nWeight Class: ");
@@ -100,7 +127,7 @@ void print_worker_stats(struct Student student){
 
 
 void increase_physical_stats(struct Student* stud){
-    float age_coefficient = (float)(1 - (stud->age - 16) / 100);
+    float age_coefficient = (1 - (float)((stud->age - 16) / 100.0));
     float destiny_agility_coefficient = (float)(((stud->destiny_agility - (stud->agility - 20)) / 100));
     float destiny_stamina_coefficient = (float)(((stud->destiny_stamina - (stud->stamina - 20)) / 100));
     float destiny_strength_coefficient = (float)(((stud->destiny_strength - (stud->strength - 20)) / 100));
@@ -149,6 +176,7 @@ void increase_skill_stats(struct Student* stud){
     if(kicking_increase < 0) kicking_increase = 0;
     if(holds_increase < 0) holds_increase = 0;
 
+    printf("\nStud Muffin: %s", stud->name);
     printf("\nStriking increase: %f", striking_increase);
     printf("\nKicking increase: %f", kicking_increase);
     printf("\nHolds increase: %f", holds_increase);

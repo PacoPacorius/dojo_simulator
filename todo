@@ -20,6 +20,29 @@ student struct{
     int weight_class
 
     float motivation (0-100)
+
+    # stat and stat increase history 
+
+    # stat history
+    float holds[30];
+    float striking[30];
+    float kicking[30];
+
+    float cardio[30]; 
+    float agility[30]; 
+    float strength[30]; 
+    float flexibility[30]; 
+
+    # stat increase history
+    float holds_increase[6*4*3=72]; that's too much, sorry, maybe only once per week?
+    float striking_increase[30];
+    float kicking_increase[30];
+
+    float cardio_increase[30]; 
+    float agility_increase[30]; 
+    float strength_increase[30]; 
+    float flexibility_increase[30]; 
+   
     }
     
     
@@ -34,12 +57,19 @@ they are percentages
 
 student growth -done
 
-destiny values generation
+destiny values generation -done
 
 split main.c into multiple files -how?
-generation is one file, main.c another
+generation is one file, main.c another -done
 
-first school - train 5 students at the same time
+first school - train 5 students at the same time -done
 
 training focus
 
+keep track of stat increases, stat history
+stat increases for the last 6 months, every month (how will you know when
+a focus was used?)
+stat history, a documentation of everyone's stats every 6 months for 
+the past 5 years
+
+ncurses or sdl ui want to get the Huge XTerm font! Wont do it without it
