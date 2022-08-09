@@ -64,12 +64,20 @@ generation is one file, main.c another -done
 
 first school - train 5 students at the same time -done
 
-training focus
+training focus -done
 
 keep track of stat increases, stat history
 stat increases for the last 6 months, every month (how will you know when
-a focus was used?)
-stat history, a documentation of everyone's stats every 6 months for 
-the past 5 years
+a focus was used?) the focus will also be stored -stored the stat increase, need 
+to store the focus too
 
-ncurses or sdl ui want to get the Huge XTerm font! Wont do it without it
+stat history, a documentation of everyone's stats every 6 months for 
+the past 5 years -do this later, stat increases are more important now i think
+
+sdl ui
+
+belt progression until black belt, belt exams
+
+motivation
+
+training intensity 

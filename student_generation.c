@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <math.h>
 
+#include "stack.h"
 #include "student_generation.h"
 
 struct Student generate_student(char* new_name){
@@ -33,6 +34,16 @@ struct Student generate_student(char* new_name){
 
     /* hidden stats (0-100) */
     generate_destiny_values(&temp);
+
+    /* initialize stat increase stacks */
+    temp.striking_incr = create_stack();
+    temp.kicking_incr = create_stack();
+    temp.holds_incr = create_stack();
+
+    temp.agility_incr = create_stack();
+    temp.strength_incr = create_stack();
+    temp.stamina_incr = create_stack();
+    temp.flexibility_incr = create_stack();
 
     return temp;
 }
