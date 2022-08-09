@@ -1,38 +1,42 @@
 Dojo Simulator!
 
-Train students! Participate in events! Challenge other dojos! Handle big egos and drama! have the best martial arts school in the world! 
+Train students! Participate in events! Challenge other dojos! Handle big egos
+and drama! Manage the best martial arts school in the world! 
 NEVER GIVE UP YOUR WAYYYYYYYYYYYYYYY!
 
 kind-of wiki of things currently implemented
 
-each student has base stats:
+each student has physical stats:
 1. flexibility
-2. athleticism
 3. agility
 4. strength
-5. stamina / cardio
-6. weight class / physique
+5. stamina 
+6. weight class 
 
-and skill(?) stats:
+and skill stats:
 1. kicking 
 2. striking
 3. holds
 
 You can know how to kick wthout being very flexible, but not being very
 flexible may put a cap on your kicking skill, same with striking & 
-athleticism. Strength affects all skill stats except forms and holds
-Weight class provides natural caps for kicking, striking etc. etc. Agility
-affects kicking, forms
+strength. Kicking is also dependent on agility, holds is not dependent in 
+any physical skill (even an unfit student can learn holds if they work hard)
+
+Weight class determines starting stat values and has bonuses or penalties
+on a student's destiny values (see below).
 
 Misc. physical stats:
-1. Fatigue (high fatigue may lead to injury)
+1. Fatigue (high fatigue may lead to injury) -not implemented yet
 
 Hidden / personality stats:
 1. Motivation (if it gets low, the student might leave, if it remains high 
-for a long time, the student might get a loyalty status ???)
-2. Personality (determines when motivation goes up or down)
+for a long time, the student might get a loyalty status ???) -not implemented
+yet
+2. Personality (determines when motivation goes up or down) -not implemented
+yet
 3. Destiny values for stats (natural affinity and potential for physical stats)
-4. Teaching
+4. Teaching -not implemented yet
 
 Game flow:
 Advertise -> gradually gain new students who pay a monthly fee -> 
@@ -44,13 +48,9 @@ Long time students who have a high rank belt will teach lower ranks to
 help them become better through their teaching skill
 
 
-
-
-
 Aspri, Misi Kitrini, Kitrini, Misi Prasini, Prasini, Misi Mple, Mple, Misi
 Kokkini, Kokkini, Misi Mavri
 5,5 xronia!
-
 
 
 1. generic student generation caps
@@ -114,16 +114,17 @@ and an age coefficient which is calculated by this formula (and later a training
 modifier):
 
         current_age^2 
-100% - ---------------
+100% - ---------------  AGE IS NOT A FACTOR IN SKILL GAINS ANYMORE, will
         10000 - 256 
 
-So each time a student trains in a specific field they gain:
+implement decline to due old age later down the road
+
+
+So each time a student trains a physical stat sees an increase:
 
 destiny_value_coefficient = ((destiny_value - (current_value - 20)) / 100)
-age_coefficient = (1 - (current_age - 16) / 100 )))
-random_coefficient = 0-1.2f
-training focus coefficient
-physical stat increase = point * destiny_value_coefficient * age_coefficient * training_coefficient * random_coefficient -no age coefficent, implement decline, no random coefficient, not necessary
+
+physical stat increase = point * destiny_value_coefficient * training_coefficient
 
 
 Skill stats: 
@@ -133,9 +134,7 @@ physical stat dependence coeffiecient = physical stat / (skill stat + 20)
 or if they depend on more than one physical stats: 1 / {number_of_stats} * physical stats / (skill stat + 20)
 dependence on multiple stats can be weighted with coefficients, if n coefficients are less than 1, then {new_number_of_stats} = {number_of_stats} - n
 
-skill stat increase = point * destiny_value_coefficient * dependence_coefficient * training_coefficient (* random coefficient? could work, but not really necessary, not as useless as it would havve been in physical stats. though)
-
-Is there really a point for having destiny values for skill stats if they are influenced by destiny values of physical skills? defineitely if skill stat not depndent on other stat
+skill stat increase = point * destiny_value_coefficient * dependence_coefficient * training_coefficient 
 
 
 3. destiny value generation
@@ -194,15 +193,15 @@ No Focus: x0.75 to all stats
 
 5. stat history
 -----------------
-At the third training of the first week of every month, all stat increases are
-saved. You can view these later in order to determine the rate of growth of
-your students. Only the 60 previous stat increases are saved, meaning stat
-increases older than 5 years will be erased. 
+During the first week of every month, all stat increases of the last training
+of the week are saved. You can view these later in order to determine the rate 
+of growth of your students. Only the 60 previous stat increases are saved, meaning 
+stat increases older than 5 years will be erased. 
 
 As of right now, the rightmost value is the oldest one, going to newer values
-as one reads to the right
+as one reads to the left. -this is really ugly, will change it
 
-X. training intensity
+X. training intensity -not implemented yet
 ----------------------
 low intensity: x0.75 modifier to all stat gains
 medium intensity: x1 modifier to all stat gains
