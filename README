@@ -198,10 +198,16 @@ of the week are saved. You can view these later in order to determine the rate
 of growth of your students. Only the 60 previous stat increases are saved, meaning 
 stat increases older than 5 years will be erased. 
 
-As of right now, the rightmost value is the oldest one, going to newer values
-as one reads to the left. -this is really ugly, will change it
+As of right now, the leftmost value is the oldest one, going to newer values
+as one reads to the right. 
 
-X. training intensity -not implemented yet
+6. student ranks -not implemented yet
+-----------------
+
+7. personality -not implemented yet
+---------------
+
+8. training intensity -not implemented yet
 ----------------------
 low intensity: x0.75 modifier to all stat gains
 medium intensity: x1 modifier to all stat gains

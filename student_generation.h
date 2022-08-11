@@ -1,7 +1,8 @@
 #ifndef STUDENT_GENERATION
 #define STUDENT_GENERATION
 
-#include "stack.h"
+
+#include "queue.h"
 
 #define V_SMALL         1
 #define SMALL           2
@@ -45,14 +46,14 @@ struct Student {
     int decline_age;
 
     /* stat increase history */
-    struct Stack striking_incr;
-    struct Stack kicking_incr;
-    struct Stack holds_incr;
+    struct Queue striking_incr;
+    struct Queue kicking_incr;
+    struct Queue holds_incr;
 
-    struct Stack agility_incr;
-    struct Stack strength_incr;
-    struct Stack stamina_incr;
-    struct Stack flexibility_incr;
+    struct Queue agility_incr;
+    struct Queue strength_incr;
+    struct Queue stamina_incr;
+    struct Queue flexibility_incr;
 };
 
 int rand_lim(int limit);

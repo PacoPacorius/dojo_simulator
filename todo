@@ -69,15 +69,22 @@ training focus -done
 keep track of stat increases, stat history
 stat increases for the last 6 months, every month (how will you know when
 a focus was used?) the focus will also be stored -stored the stat increase, need 
-to store the focus too
+to store the focus too, storing the focus doesnt seem all that necessary rn
+
+fix 5 year segfault, look how i handle overflows in my fun stack implementation, should be really fun
+use queues instead of stacks -done
+
+make stat history for the rest of the stats too
 
 stat history, a documentation of everyone's stats every 6 months for 
 the past 5 years -do this later, stat increases are more important now i think
 
-sdl ui
-
 belt progression until black belt, belt exams
+
+personalities
 
 motivation
 
 training intensity 
+
+sdl ui

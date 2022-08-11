@@ -2,8 +2,8 @@
 #include <time.h>
 #include <stdlib.h>
 
+#include "queue.h"
 #include "student_generation.h"
-#include "stack.h"
 
 
 #define NO_FOCUS        0
@@ -156,13 +156,10 @@ void print_student_stats(struct Student student){
 void print_student_stat_history(struct Student student){
     int i;
 
-    printf("\nSup big boy");
     printf("\n\nStud Muffin: %s\n", student.name);
     printf("\nStriking  ");
-    
-    for(i = 0; number_of_items(&student.striking_incr) - i > 0; i++){
-        printf(" %f", peek(&student.striking_incr, number_of_items(&student.striking_incr) - i - 1));
-    }
+   
+    print_whole_queue(student.striking_incr);
 }
 
 
@@ -239,10 +236,10 @@ void increase_physical_stats(struct Student* stud, int training_focus, int weeks
 
         if(j == 2 && weeks == 1){
             printf("\nWriting physical stat increase history array...");
-            push(&stud->agility_incr, agility_increase);
-            push(&stud->stamina_incr, stamina_increase);
-            push(&stud->strength_incr, strength_increase);
-            push(&stud->flexibility_incr, flexibility_increase);
+            enqueue(&stud->agility_incr, agility_increase);
+            enqueue(&stud->stamina_incr, stamina_increase);
+            enqueue(&stud->strength_incr, strength_increase);
+            enqueue(&stud->flexibility_incr, flexibility_increase);
         }
         j++;
     }
@@ -309,11 +306,11 @@ void increase_skill_stats(struct Student* stud, int training_focus, int weeks){
         if(kicking_increase < 0) kicking_increase = 0;
         if(holds_increase < 0) holds_increase = 0;
 
-        printf("\nStud Muffin: %s", stud->name);
-        printf("\nStriking increase: %f", striking_increase);
-        printf("\nKicking increase: %f", kicking_increase);
-        printf("\nHolds increase: %f", holds_increase);
-        printf("\n");
+//        printf("\nStud Muffin: %s", stud->name);
+//        printf("\nStriking increase: %f", striking_increase);
+//        printf("\nKicking increase: %f", kicking_increase);
+//        printf("\nHolds increase: %f", holds_increase);
+//        printf("\n");
 
         if(stud->striking < 100) stud->striking += striking_increase;
         if(stud->kicking < 100) stud->kicking += kicking_increase;
@@ -321,9 +318,9 @@ void increase_skill_stats(struct Student* stud, int training_focus, int weeks){
 
         if(j == 2 && weeks == 1){
             printf("\nWriting skill stat increase history array... %f", striking_increase);
-            push(&stud->kicking_incr, kicking_increase);
-            push(&stud->striking_incr, striking_increase);
-            push(&stud->holds_incr, holds_increase);
+            enqueue(&stud->kicking_incr, kicking_increase);
+            enqueue(&stud->striking_incr, striking_increase);
+            enqueue(&stud->holds_incr, holds_increase);
         }
         j++;
     }
