@@ -12,6 +12,12 @@
 #define HEAVYWEIGHT     6
 #define S_HEAVYWEIGHT   7
 
+#define NO_PREFERENCE  -1
+#define NO_FOCUS        0
+#define STRIKING_FOCUS  1
+#define KICKING_FOCUS   2
+#define HOLDS_FOCUS     3
+
 struct Student {
     char* name;
     int age;
@@ -31,6 +37,7 @@ struct Student {
     int weight_class;
     
     /* personality stats (0-100) */
+    int training_preference;
     float motivation;
 
     /* hidden stats (0-100) */
@@ -66,5 +73,12 @@ int generate_strength(int weight_class, int age);
 int generate_flexibility(int weight_class, int age);
 int generate_stamina(int weight_class, int age);
 void generate_destiny_values(struct Student* stud);
+
+void increase_physical_stats(struct Student* stud, int training_focus, int weeks);
+void increase_skill_stats(struct Student* stud, int training_focus, int weeks);
+void motivation_updater(struct Student* stud, int training_focus);
+
+void print_student_stats(struct Student student);
+void print_student_stat_history(struct Student student, int stat_choice);
 
 #endif

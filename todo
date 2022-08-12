@@ -74,17 +74,23 @@ to store the focus too, storing the focus doesnt seem all that necessary rn
 fix 5 year segfault, look how i handle overflows in my fun stack implementation, should be really fun
 use queues instead of stacks -done
 
-make stat history for the rest of the stats too
+make stat history for the rest of the stats too -done
 
 stat history, a documentation of everyone's stats every 6 months for 
 the past 5 years -do this later, stat increases are more important now i think
 
+personalities, only training preference for now -done
+
+motivation -done
+
 belt progression until black belt, belt exams
 
-personalities
-
-motivation
+student arrival and leave (plus a very easy way to turn it off for testing purposes)
 
 training intensity 
+
+events
+
+more personality
 
 sdl ui

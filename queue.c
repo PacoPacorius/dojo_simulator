@@ -81,7 +81,11 @@ void print_whole_queue(struct Queue queue){
    if(queue.rear >= queue.front){
        for(i = queue.front; i < queue.rear + 1; i++){
            printf("%f ", queue.array[i]);
-           if(i % 10 == 0) printf("\n");
+           j++;
+           if(j % 10 == 0){
+               printf("\n");
+               j = 0;
+           }
        }
    }
    else {

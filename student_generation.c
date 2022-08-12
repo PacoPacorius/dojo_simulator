@@ -29,7 +29,8 @@ struct Student generate_student(char* new_name){
 
     
     /* personality stats (0-100) */
-    temp.motivation = 100;
+    temp.motivation = 50;
+    temp.training_preference = rand_lim(4) - 1;
 
     /* hidden stats (0-100) */
     generate_destiny_values(&temp);
@@ -293,4 +294,285 @@ double get_gaussdist_number(int lower_lim, int upper_lim){
     }
 
     return gaussian_num;
+}
+
+void print_student_stats(struct Student student){
+    printf("\n");
+    printf("\n");
+    printf("Name: %s", student.name);
+    printf("\t\tAge: %i", student.age);
+    printf("\n");
+
+    printf("\nSkill Stats: ");
+    printf("\nStriking: %f\t\tPotential: %d", student.striking, student.destiny_striking);
+    printf("\nKicking: %f\t\tPotential: %d", student.kicking, student.destiny_kicking);
+    printf("\nHolds:  %f\t\tPotential: %d", student.holds, student.destiny_holds);
+    printf("\n");
+
+    printf("\nPhysical Stats: ");
+    printf("\nAgility: %f\t\tPotential: %d", student.agility, student.destiny_agility);
+    printf("\nStrength: %f\t\tPotential: %d", student.strength, student.destiny_strength);
+    printf("\nFlexibility: %f\t\tPotential: %d", student.flexibility, student.destiny_flexibility);
+    printf("\nStamina: %f\t\tPotential: %d", student.stamina, student.destiny_stamina);
+    printf("\n");
+
+    printf("\nMotivation: %2.f", student.motivation);
+
+    printf("\nWeight Class: ");
+    switch(student.weight_class){
+        case 1:
+            printf("Very Small");
+            break;
+        case 2:
+            printf("Small");
+            break;
+        case 3:
+            printf("Lightweight");
+            break;
+        case 4:
+            printf("Middleweight");
+            break;
+        case 5:
+            printf("Light Heavyweight");
+            break;
+        case 6:
+            printf("Heavyweight");
+            break;
+        case 7:
+            printf("Super Heavyweight");
+            break;
+    }
+
+    printf("\nTraining Preference: ");
+    switch(student.training_preference){
+        case -1:
+            printf("No preference");
+            break;
+        case 0:
+            printf("General Training");
+            break;
+        case 1:
+            printf("Striking");
+            break;
+        case 2:
+            printf("Kicking");
+            break;
+        case 3:
+            printf("Holds");
+            break;
+    }
+    printf("\n");
+}
+
+void print_student_stat_history(struct Student student, int stat_choice){
+    int i;
+
+    printf("\n\nStud Muffin: %s\n", student.name);
+    switch(stat_choice){
+        case 1:
+            printf("\nStriking  ");
+            print_whole_queue(student.striking_incr);
+        break;
+        case 2:
+            printf("\nKicking  ");
+            print_whole_queue(student.kicking_incr);
+        break;
+        case 3:
+            printf("\nHolds  ");
+            print_whole_queue(student.holds_incr);
+        break;
+        case 4:
+            printf("\nAgility  ");
+            print_whole_queue(student.agility_incr);
+        break;
+        case 5:
+            printf("\nStrength  ");
+            print_whole_queue(student.strength_incr);
+        break;
+        case 6:
+            printf("\nStamina  ");
+            print_whole_queue(student.stamina_incr);
+        break;
+        case 7:
+            printf("\nFlexibility  ");
+            print_whole_queue(student.flexibility_incr);
+        break;
+    }
+
+}
+
+
+void increase_physical_stats(struct Student* stud, int training_focus, int weeks){
+    float age_coefficient;
+    float destiny_agility_coefficient;
+    float destiny_stamina_coefficient;
+    float destiny_strength_coefficient;
+    float destiny_flexibility_coefficient;
+    float point = 0.1;
+
+    /* training focus coefficients */
+    float train_focus_agility_coefficient = 1;
+    float train_focus_stamina_coefficient = 1;
+    float train_focus_strength_coefficient = 1;
+    float train_focus_flexibility_coefficient = 1;
+   
+
+    int j = 0;
+    while(j < 3){
+        age_coefficient = (1 - (float)((stud->age - 16) / 100.0));
+        destiny_agility_coefficient = (float)(((stud->destiny_agility - (stud->agility - 20)) / 100));
+        destiny_stamina_coefficient = (float)(((stud->destiny_stamina - (stud->stamina - 20)) / 100));
+        destiny_strength_coefficient = (float)(((stud->destiny_strength - (stud->strength - 20)) / 100));
+        destiny_flexibility_coefficient = (float)(((stud->destiny_flexibility - (stud->flexibility - 20)) / 100));
+
+        switch(training_focus){
+            case NO_FOCUS:
+                train_focus_agility_coefficient = 0.75;
+                train_focus_stamina_coefficient = 0.75;
+                train_focus_strength_coefficient = 0.75;
+                train_focus_flexibility_coefficient = 0.75;
+                break;
+        case STRIKING_FOCUS:
+                train_focus_agility_coefficient = 0.5;
+                train_focus_stamina_coefficient = 0.5;
+                train_focus_strength_coefficient = 0.75;
+                train_focus_flexibility_coefficient = 0.5;
+                break;
+        case KICKING_FOCUS:
+                train_focus_agility_coefficient = 0.5;
+                train_focus_stamina_coefficient = 0.5;
+                train_focus_strength_coefficient = 0.5;
+                train_focus_flexibility_coefficient = 1;
+                break;
+        case HOLDS_FOCUS:
+                train_focus_agility_coefficient = 0.5;
+                train_focus_stamina_coefficient = 0.5;
+                train_focus_strength_coefficient = 0.5;
+                train_focus_flexibility_coefficient = 0.5;
+                break;
+    }
+
+        float agility_increase = point * destiny_agility_coefficient * train_focus_agility_coefficient;
+        float stamina_increase = point * destiny_stamina_coefficient * train_focus_stamina_coefficient;
+        float strength_increase = point * destiny_strength_coefficient * train_focus_strength_coefficient;
+        float flexibility_increase = point * destiny_flexibility_coefficient * train_focus_flexibility_coefficient;
+
+        if(agility_increase < 0) agility_increase = 0;
+        if(stamina_increase < 0) stamina_increase = 0;
+        if(strength_increase < 0) strength_increase = 0;
+        if(flexibility_increase < 0) flexibility_increase = 0;
+
+    //  printf("\nAgility increase: %f", agility_increase);
+    //  printf("\nStamina increase: %f", stamina_increase);
+    //  printf("\nStrength increase: %f", strength_increase);
+    //  printf("\nFlexibility increase: %f", flexibility_increase);
+    //  printf("\n");
+
+        if(stud->agility < 100) stud->agility += agility_increase;
+        if(stud->stamina < 100) stud->stamina += stamina_increase;
+        if(stud->strength < 100) stud->strength += strength_increase;
+        if(stud->flexibility < 100) stud->flexibility += flexibility_increase;
+
+        if(j == 2 && weeks == 1){
+//          printf("\nWriting physical stat increase history array...");
+            enqueue(&stud->agility_incr, agility_increase);
+            enqueue(&stud->stamina_incr, stamina_increase);
+            enqueue(&stud->strength_incr, strength_increase);
+            enqueue(&stud->flexibility_incr, flexibility_increase);
+        }
+        j++;
+    }
+}
+
+void increase_skill_stats(struct Student* stud, int training_focus, int weeks){
+    float age_coefficient;
+    float destiny_striking_coefficient;
+    float destiny_kicking_coefficient;
+    float destiny_holds_coefficient;
+    float point = 0.1;
+
+    /* training focus coefficients */
+    float train_focus_striking_coefficient = 1;
+    float train_focus_kicking_coefficient = 1;
+    float train_focus_holds_coefficient = 1;
+
+    /* coefficient based on dependence by physical skills */
+    float striking_coefficient;
+    float kicking_coefficient;
+    float holds_coefficient;
+
+    int j = 0;
+    while(j < 3){
+        age_coefficient = (float)(1 - (stud->age - 16) / 100);
+        destiny_striking_coefficient = (float)(((stud->destiny_striking - (stud->striking - 20)) / 100));
+        destiny_kicking_coefficient = (float)(((stud->destiny_kicking - (stud->kicking - 20)) / 100));
+        destiny_holds_coefficient = (float)(((stud->destiny_holds - (stud->holds - 20)) / 100));
+
+
+        /* coefficient based on dependence by physical skills */
+        striking_coefficient = stud->strength / (stud->striking + 20);
+        kicking_coefficient = 0.5*(stud->flexibility + stud->agility + 1/3 * stud->strength) / (stud->kicking + 20);
+        holds_coefficient = 1;
+
+        switch(training_focus){
+            case NO_FOCUS:
+                train_focus_striking_coefficient = 0.75;
+                train_focus_kicking_coefficient = 0.75;
+                train_focus_holds_coefficient = 0.75;
+                break;
+            case STRIKING_FOCUS:
+                train_focus_striking_coefficient = 1.25;
+                train_focus_kicking_coefficient = 0.5;
+                train_focus_holds_coefficient = 0.5;
+            break;
+            case KICKING_FOCUS:
+                train_focus_striking_coefficient = 0.5;
+                train_focus_kicking_coefficient = 1.25;
+                train_focus_holds_coefficient = 0.5;
+            break;
+            case HOLDS_FOCUS:
+                train_focus_striking_coefficient = 0.5;
+                train_focus_kicking_coefficient = 0.5;
+                train_focus_holds_coefficient = 1.25;
+            break;
+        }
+
+        float striking_increase = point * destiny_striking_coefficient * striking_coefficient * train_focus_striking_coefficient;
+        float kicking_increase = point * destiny_kicking_coefficient * kicking_coefficient * train_focus_kicking_coefficient;
+        float holds_increase = point * destiny_holds_coefficient * holds_coefficient * train_focus_holds_coefficient;
+
+        if(striking_increase < 0) striking_increase = 0;
+        if(kicking_increase < 0) kicking_increase = 0;
+        if(holds_increase < 0) holds_increase = 0;
+
+//        printf("\nStud Muffin: %s", stud->name);
+//        printf("\nStriking increase: %f", striking_increase);
+//        printf("\nKicking increase: %f", kicking_increase);
+//        printf("\nHolds increase: %f", holds_increase);
+//        printf("\n");
+
+        if(stud->striking < 100) stud->striking += striking_increase;
+        if(stud->kicking < 100) stud->kicking += kicking_increase;
+        if(stud->holds < 100) stud->holds += holds_increase;
+
+        if(j == 2 && weeks == 1){
+ //         printf("\nWriting skill stat increase history array... %f", striking_increase);
+            enqueue(&stud->kicking_incr, kicking_increase);
+            enqueue(&stud->striking_incr, striking_increase);
+            enqueue(&stud->holds_incr, holds_increase);
+        }
+        j++;
+    }
+}
+
+void motivation_updater(struct Student *stud, int training_focus){
+    if(stud->training_preference == NO_PREFERENCE){
+       if(stud->motivation + 0.25 < 100) stud->motivation += 0.25;
+    }
+    else if(training_focus == stud->training_preference){
+       if(stud->motivation + 5 < 100) stud->motivation += 5;
+    }
+    else {
+        if(stud->motivation - 2 > 0) stud->motivation -= 2;
+    }
 }
