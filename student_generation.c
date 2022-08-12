@@ -45,6 +45,10 @@ struct Student generate_student(char* new_name){
     temp.stamina_incr = create_queue();
     temp.flexibility_incr = create_queue();
 
+    /* belt rank */
+    temp.belt_rank = WHITE_BELT;
+    temp.months_since_previous_test = 0;
+
     return temp;
 }
 
@@ -297,6 +301,10 @@ double get_gaussdist_number(int lower_lim, int upper_lim){
 }
 
 void print_student_stats(struct Student student){
+
+    printf("\n");
+    printf("\n");
+    printf("***START OF STUDENT STAT OUTPUT***");
     printf("\n");
     printf("\n");
     printf("Name: %s", student.name);
@@ -314,6 +322,44 @@ void print_student_stats(struct Student student){
     printf("\nStrength: %f\t\tPotential: %d", student.strength, student.destiny_strength);
     printf("\nFlexibility: %f\t\tPotential: %d", student.flexibility, student.destiny_flexibility);
     printf("\nStamina: %f\t\tPotential: %d", student.stamina, student.destiny_stamina);
+    printf("\n");
+
+    printf("\nBelt Rank: ");
+    switch(student.belt_rank){
+        case 0:
+            printf("White Belt");
+            break;
+        case 1:
+            printf("White / Yellow Belt");
+            break;
+        case 2:
+            printf("Yellow Belt");
+            break;
+        case 3:
+            printf("Yellow / Green Belt");
+            break;
+        case 4:
+            printf("Green Belt");
+            break;
+        case 5:
+            printf("Green / Blue Belt");
+            break;
+        case 6:
+            printf("Blue Belt");
+            break;
+        case 7:
+            printf("Blue / Red Belt");
+            break;
+        case 8:
+            printf("Red Belt");
+            break;
+        case 9:
+            printf("Red / Black Belt");
+            break;
+        case 10:
+            printf("Black Belt, 1st Dan");
+            break;
+    }
     printf("\n");
 
     printf("\nMotivation: %2.f", student.motivation);
@@ -361,7 +407,11 @@ void print_student_stats(struct Student student){
             printf("Holds");
             break;
     }
+    printf("\n");;
     printf("\n");
+    printf("***END OF STUDENT STAT OUTPUT***");
+    printf("\n");
+
 }
 
 void print_student_stat_history(struct Student student, int stat_choice){
@@ -568,11 +618,14 @@ void increase_skill_stats(struct Student* stud, int training_focus, int weeks){
 void motivation_updater(struct Student *stud, int training_focus){
     if(stud->training_preference == NO_PREFERENCE){
        if(stud->motivation + 0.25 < 100) stud->motivation += 0.25;
+       else stud->motivation = 100;
     }
     else if(training_focus == stud->training_preference){
        if(stud->motivation + 5 < 100) stud->motivation += 5;
+       else stud->motivation = 100;
     }
     else {
         if(stud->motivation - 2 > 0) stud->motivation -= 2;
+        else stud->motivation = 0;
     }
 }

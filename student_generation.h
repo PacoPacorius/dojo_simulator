@@ -18,6 +18,18 @@
 #define KICKING_FOCUS   2
 #define HOLDS_FOCUS     3
 
+#define WHITE_BELT              0
+#define WHITE_YELLOW_BELT       1
+#define YELLOW_BELT             2
+#define YELLOW_GREEN_BELT       3
+#define GREEN_BELT              4
+#define GREEN_BLUE_BELT         5
+#define BLUE_BELT               6
+#define BLUE_RED_BELT           7
+#define RED_BELT                8
+#define RED_BLACK_BELT          9
+#define DAN_1ST                 10
+
 struct Student {
     char* name;
     int age;
@@ -61,6 +73,10 @@ struct Student {
     struct Queue strength_incr;
     struct Queue stamina_incr;
     struct Queue flexibility_incr;
+
+    /* belt rank */
+    int belt_rank;
+    int months_since_previous_test;
 };
 
 int rand_lim(int limit);
