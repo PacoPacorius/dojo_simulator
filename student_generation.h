@@ -51,6 +51,7 @@ struct Student {
     /* personality stats (0-100) */
     int training_preference;
     float motivation;
+    int months_at_dojo;
 
     /* hidden stats (0-100) */
     int destiny_agility;
@@ -93,6 +94,10 @@ void generate_destiny_values(struct Student* stud);
 void increase_physical_stats(struct Student* stud, int training_focus, int weeks);
 void increase_skill_stats(struct Student* stud, int training_focus, int weeks);
 void motivation_updater(struct Student* stud, int training_focus);
+
+int will_they_leave(struct Student* student);    // returns 1 for yes, 0 for no
+/* the index of the student that leaves */
+void leave_dojo(struct Student* studen_list, int* number_of_students, int index);
 
 void print_student_stats(struct Student student);
 void print_student_stat_history(struct Student student, int stat_choice);

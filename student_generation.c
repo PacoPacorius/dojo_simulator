@@ -31,6 +31,7 @@ struct Student generate_student(char* new_name){
     /* personality stats (0-100) */
     temp.motivation = 50;
     temp.training_preference = rand_lim(4) - 1;
+    temp.months_at_dojo = 0;
 
     /* hidden stats (0-100) */
     generate_destiny_values(&temp);
@@ -407,7 +408,8 @@ void print_student_stats(struct Student student){
             printf("Holds");
             break;
     }
-    printf("\n");;
+    printf("\nMonths At Dojo: %d", student.months_at_dojo);
+    printf("\n");
     printf("\n");
     printf("***END OF STUDENT STAT OUTPUT***");
     printf("\n");
@@ -628,4 +630,35 @@ void motivation_updater(struct Student *stud, int training_focus){
         if(stud->motivation - 2 > 0) stud->motivation -= 2;
         else stud->motivation = 0;
     }
+}
+
+int will_they_leave(struct Student* student){
+    /* random out of the blue leave, 1 in 10000 chance */
+    int random_num1 = rand_lim(10000);
+    int random_num2;
+    if(random_num1 == 365){
+        printf("\nRandom leave! %s mysteriously disappeared from the face of the earth!", student->name);
+        return 1;
+    }
+
+    random_num1 = rand_lim(50);
+    random_num2 = rand_lim(30);
+
+    if(student->motivation < (random_num1 + random_num2) / 2.0){
+        printf("\nLow morale leave! %s just can't stand it at your dojo anymore!", student->name);
+        return 1;
+    }
+
+    return 0;
+}
+
+void leave_dojo(struct Student* student_list, int* number_of_students, int index){
+    printf("\nStudent %s has left your dojo! You only have %d students now.", student_list[index].name, *number_of_students - 1);
+
+    printf("\nStudent %s's place is taken by %s's place", student_list[index].name, student_list[*number_of_students - 1].name);
+    student_list[index] = student_list[*number_of_students - 1];
+
+    *number_of_students = *number_of_students - 1;
+
+
 }

@@ -18,14 +18,15 @@ int main(){
     int number_of_students = 5;
     int training_focus = 0; // default to no focus
     char c;
+    /* when a student leaves, move the student that is last in the array in his place */
     struct Student stud_muffin[5];
     srand((unsigned int)time(NULL));
-        stud_muffin[0] = generate_student("John Doe");
-        stud_muffin[1] = generate_student("Jane Doe");
-        stud_muffin[2] = generate_student("Hammer Hadley");
-        stud_muffin[3] = generate_student("Commander Kawagishi");
-        stud_muffin[4] = generate_student("Fujio Narahashi");
-    for(i = 0; i < 5; i++){ 
+        stud_muffin[0] = generate_student("Big Ned");
+        stud_muffin[1] = generate_student("Mamra O Pantotinos");
+        stud_muffin[2] = generate_student("Eisaku Hoshino");
+        stud_muffin[3] = generate_student("Hiroyasu Gakusha");
+        stud_muffin[4] = generate_student("Toshiharu Hyobanshi");
+    for(i = 0; i < number_of_students; i++){ 
         print_student_stats(stud_muffin[i]);
     }
 
@@ -56,7 +57,7 @@ int main(){
             break;
             case '1':
             weeks++;
-            for(i = 0; i < 5; i++){             
+            for(i = 0; i < number_of_students; i++){             
                 /* increase all of the students' stats */
                 increase_physical_stats(&stud_muffin[i], training_focus, weeks);
                 increase_skill_stats(&stud_muffin[i], training_focus, weeks);
@@ -74,6 +75,9 @@ int main(){
                     belt_test(&stud_muffin[i]);
                 }
 
+                if(will_they_leave(&stud_muffin[i]) == 1){
+                    leave_dojo(stud_muffin, &number_of_students, i);
+                }
             }
             break;
             case '2':
@@ -136,7 +140,10 @@ int main(){
         if(weeks == 5){
             months++;
             /* update months since previous belt rank test */
-            for(i = 0; i < number_of_students; i++) stud_muffin[i].months_since_previous_test++; 
+            for(i = 0; i < number_of_students; i++){
+                stud_muffin[i].months_since_previous_test++; 
+                stud_muffin[i].months_at_dojo++;
+            }
             weeks = 0;
         }
         if(months == 12){
