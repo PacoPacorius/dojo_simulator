@@ -11,15 +11,17 @@
 #define KICKING_FOCUS   2
 #define HOLDS_FOCUS     3
 
+#define MAX_STUDENTS1   40
+
 void belt_test(struct Student* student);
+void new_student_batch(struct Student* student_list, int* number_of_students);
 
 int main(){
     int i, j, weeks, months, years;
     int number_of_students = 5;
     int training_focus = 0; // default to no focus
     char c;
-    /* when a student leaves, move the student that is last in the array in his place */
-    struct Student stud_muffin[5];
+    struct Student stud_muffin[MAX_STUDENTS1];
     srand((unsigned int)time(NULL));
         stud_muffin[0] = generate_student("Big Ned");
         stud_muffin[1] = generate_student("Mamra O Pantotinos");
@@ -137,6 +139,7 @@ int main(){
             print_student_stat_history(stud_muffin[i], j);
             break;
         }
+        /* change month */
         if(weeks == 5){
             months++;
             /* update months since previous belt rank test */
@@ -146,10 +149,14 @@ int main(){
             }
             weeks = 0;
         }
+        /* change year */
         if(months == 12){
             months = 0;
             years++;
             for(i = 0; i < 5; i++) stud_muffin[i].age++;
+        }
+        if(months == 9 && weeks == 1){
+            new_student_batch(stud_muffin, &number_of_students);
         }
 
         printf("\n");
@@ -205,5 +212,20 @@ void belt_test(struct Student* student){
         }
     }
     printf("\n");
+
+}
+
+
+void new_student_batch(struct Student* student_list, int* number_of_students){
+    int new_student_num = rand_lim(4) + 2;
+    int i;
+
+    for(i = 0; i < new_student_num; i++){
+        if(*number_of_students < MAX_STUDENTS1){
+            student_list[*number_of_students] = generate_student("New Student");
+            *number_of_students += 1;
+        }
+
+    }
 
 }

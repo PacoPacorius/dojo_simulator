@@ -652,6 +652,7 @@ int will_they_leave(struct Student* student){
     return 0;
 }
 
+/* when a student leaves, move the last student in the array in their place */
 void leave_dojo(struct Student* student_list, int* number_of_students, int index){
     printf("\nStudent %s has left your dojo! You only have %d students now.", student_list[index].name, *number_of_students - 1);
 
