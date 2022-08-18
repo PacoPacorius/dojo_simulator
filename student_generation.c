@@ -1,12 +1,16 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <math.h>
+#include <string.h>
 
+#include "name_generator.h"
 #include "student_generation.h"
 
 struct Student generate_student(char* new_name){
     struct Student temp;
-    temp.name = new_name;
+    char* dummy_name = random_name();
+    strcpy(temp.name, dummy_name);
+    free(dummy_name);
 
     /* generate age */
     temp.age = rand_lim(45) + 16;

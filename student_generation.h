@@ -31,7 +31,7 @@
 #define DAN_1ST                 10
 
 struct Student {
-    char* name;
+    char name[40];
     int age;
 
     /* skill stats (0-100) */
