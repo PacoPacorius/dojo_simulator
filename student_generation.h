@@ -83,7 +83,7 @@ struct Student {
 int rand_lim(int limit);
 double get_gaussdist_number(int lower_lim, int upper_lim);
 
-struct Student generate_student(char* new_name);
+struct Student generate_student();
 int generate_weight_class();
 int generate_agility(int weight_class, int age);
 int generate_strength(int weight_class, int age);

@@ -7,7 +7,8 @@ char* random_name(){
                                       "Jamie ", "Dave ", "Aaron ", "Vern ", "Justin ", "Jared ", "David Scott ",
                                       "Kurtis ", "Ethan ", "Billy ", "Taylor ", "Timmy ", "AJ ", "Donald ",
                                       "Tracy ", "Rick ", "Mike ", "Big Mike ", "Mark ", "Erin ", "Ben ", "Grant ",
-                                      "Renato ", "Shotaro ", "Masahiro ", "Kiyoshi " };
+                                      "Renato ", "Shotaro ", "Masahiro ", "Kiyoshi ", "William ", "Corey ", "Frederick ",
+                                      "Chino " };
 
     char* female_first_name[] = { "Jean ", "Jane ", "Victoria ", "Mary ", "Chris ", "Vicky ", "Tanya ", "Maria ",
                                         "Jamie ", "Sara ", "Alice ", "Margaret ", "Kelly ", "Peyton ", "Alex ", "Alexia ",
@@ -22,7 +23,7 @@ char* random_name(){
                                 "Mayo", "Roditis", "Mayugba", "Sgarbossa", "Allen", "Moreno", "Tartol", "Duck", "Bratton",
                                 "Froberg", "Kennedy", "Reis", "Trombino", "Common", "Frederiksen", "Preston", "Quinby", "McTague",
                                 "Dudley", "Nottke", "Brandell", "Swanton", "Laufey", "Goth", "Griffith", "Blanc", "Albrecht", 
-                                "Harper", "Bennett", "Leda", "Akiyama" };
+                                "Harper", "Bennett", "Leda", "Akiyama", "Kikuchi", "Hicks", "Garcia", "Lordan", "Corey", "Carvajal ", "Lorz " };
     int gender, index;
     int array_size;
     char* first_name;

@@ -91,14 +91,22 @@ student arrival -done
 random names -done
 implement them in the game! -done
 
-polish student leave mechanic
-
-money handling, bills to pay
-
-training intensity 
+money handling, bills to pay -done
 
 events
 
+training intensity 
+
 more personality
 
+advertising (either before or after personality, make dojo start with 0 students and to have to advertise, give less students each September)
+
 sdl ui
+
+polish student leave mechanic (volatile first few months, more stable as time goes on, loyalty)
+
+*** Known bugs ***
+When looking at students' stats in the first week of september, new students are added each time the main screen shows up -fixed
+When the dojo has zero students, you can get soft-locked in the show student stats and show student stat history screens -fixed
+Can't see stats of any student after the tenth student has arrived, it's the way I handle the character input thingy (how will I fix this? scanf and convert to string / char?) -fixed, scanf was the solution
+

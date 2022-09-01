@@ -6,7 +6,7 @@
 #include "name_generator.h"
 #include "student_generation.h"
 
-struct Student generate_student(char* new_name){
+struct Student generate_student(){
     struct Student temp;
     char* dummy_name = random_name();
     strcpy(temp.name, dummy_name);
@@ -19,8 +19,6 @@ struct Student generate_student(char* new_name){
     temp.weight_class = generate_weight_class();
 
     /* physical stats (0-100) */
-    // generate agility
-    // temp.agility = generate_agility(int weight_class);
     temp.agility = generate_agility(temp.weight_class, temp.age);
     temp.strength = generate_strength(temp.weight_class, temp.age);
     temp.flexibility = generate_flexibility(temp.weight_class, temp.age);
@@ -658,9 +656,9 @@ int will_they_leave(struct Student* student){
 
 /* when a student leaves, move the last student in the array in their place */
 void leave_dojo(struct Student* student_list, int* number_of_students, int index){
-    printf("\nStudent %s has left your dojo! You only have %d students now.", student_list[index].name, *number_of_students - 1);
+    printf("\nStudent %s has left your dojo! You only have %d students now.\n", student_list[index].name, *number_of_students - 1);
 
-    printf("\nStudent %s's place is taken by %s's place", student_list[index].name, student_list[*number_of_students - 1].name);
+//  printf("\nStudent %s's place is taken by %s's place", student_list[index].name, student_list[*number_of_students - 1].name);
     student_list[index] = student_list[*number_of_students - 1];
 
     *number_of_students = *number_of_students - 1;
