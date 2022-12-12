@@ -195,12 +195,12 @@ int main(){
 void belt_test(struct Student* student){
     student->months_since_previous_test = 0;
     student->belt_rank++;
-    if(student->motivation + 20 < 100) student->motivation += 20;
+    if(student->motivation + 10 < 100) student->motivation += 10;
     else student->motivation = 100;
 
     /* this is additive to the previous motivation boost */
     if(student->belt_rank == DAN_1ST){
-        if(student->motivation + 20 < 100) student->motivation += 40;
+        if(student->motivation + 30 < 100) student->motivation += 30;
         else student->motivation = 100;
     }
     

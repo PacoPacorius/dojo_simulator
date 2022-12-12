@@ -1,98 +1,4 @@
-#define Very Small ( < 40 kg)
-        Small (41-55kg)
-        Lightweight (56-70kg)
-        Middleweight (71-80kg)
-        Light Heavyweight (81-95kg)
-        Heavyweight (96-110kg)
-        Super Heavyweight ( > 111kg)
-        
-
-student struct{
-    float holds (0-100)
-    float striking (0-100)
-    float kicking (0-100)
-
-    float cardio (0-100)
-    float agility (0-100)
-    float strength (0-100)
-    float flexibility (0-100)
-
-    int weight_class
-
-    float motivation (0-100)
-
-    # stat and stat increase history 
-
-    # stat history
-    float holds[30];
-    float striking[30];
-    float kicking[30];
-
-    float cardio[30]; 
-    float agility[30]; 
-    float strength[30]; 
-    float flexibility[30]; 
-
-    # stat increase history
-    float holds_increase[6*4*3=72]; that's too much, sorry, maybe only once per week?
-    float striking_increase[30];
-    float kicking_increase[30];
-
-    float cardio_increase[30]; 
-    float agility_increase[30]; 
-    float strength_increase[30]; 
-    float flexibility_increase[30]; 
-   
-    }
-    
-    
-generate some workers done
-
-decide generation stat caps done
-generate physical stats done
-
-hidden destiny values -how do they work?
-they are percentages
-
-
-student growth -done
-
-destiny values generation -done
-
-split main.c into multiple files -how?
-generation is one file, main.c another -done
-
-first school - train 5 students at the same time -done
-
-training focus -done
-
-keep track of stat increases, stat history
-stat increases for the last 6 months, every month (how will you know when
-a focus was used?) the focus will also be stored -stored the stat increase, need 
-to store the focus too, storing the focus doesnt seem all that necessary rn
-
-fix 5 year segfault, look how i handle overflows in my fun stack implementation, should be really fun
-use queues instead of stacks -done
-
-make stat history for the rest of the stats too -done
-
-stat history, a documentation of everyone's stats every 6 months for 
-the past 5 years -do this later, stat increases are more important now i think
-
-personalities, only training preference for now -done
-
-motivation -done
-
-belt progression until black belt, belt exams -done, but very cosmetically, has no real current use apart from motivation gains
-
-student leave (plus a very easy way to turn it off for testing purposes) -done, polish mechanic when student arrival is implemented
-student arrival -done
-
-random names -done
-implement them in the game! -done
-
-money handling, bills to pay -done
-
+debug tools!
 events
 
 training intensity 
@@ -101,12 +7,11 @@ more personality
 
 advertising (either before or after personality, make dojo start with 0 students and to have to advertise, give less students each September)
 
+stat history, training focus & intensity history
+
 sdl ui
 
 polish student leave mechanic (volatile first few months, more stable as time goes on, loyalty)
 
 *** Known bugs ***
-When looking at students' stats in the first week of september, new students are added each time the main screen shows up -fixed
-When the dojo has zero students, you can get soft-locked in the show student stats and show student stat history screens -fixed
-Can't see stats of any student after the tenth student has arrived, it's the way I handle the character input thingy (how will I fix this? scanf and convert to string / char?) -fixed, scanf was the solution
 

@@ -270,7 +270,7 @@ to implement when relationships are implemented
 k. Troublemaker: will gain morale if people dislike them, will cause trouble
 when implemented.
 
-l. Loner: will lose morale if people like him, will gain morale if they has no
+l. Loner: will lose morale if people like him, will gain morale if they have no
 relationship with the rest of the students.
 
 m. Insecure: will lose morale if they have no realtionships with other
@@ -311,8 +311,8 @@ A student can only take a black belt test at least one year after gaining the re
 belt rank and only in January. That makes the maximum possible time to take a
 test for the black belt 1.5 years and the minimum 1 year.
 
-Each time a student climbs in rank, they get a +20 boost in motivation. An
-exception to this is gaining the black belt rank, which gets them +40 motivation.
+Each time a student climbs in rank, they get a +10 boost in motivation. An
+exception to this is gaining the black belt rank, which gets them +30 motivation.
 
 (below ranks are not implemented yet)
 Either hard limits to gain next rank or give the decision to the player on who to 
