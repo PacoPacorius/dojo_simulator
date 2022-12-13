@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "queue.h"
 #include "student_generation.h"
@@ -17,7 +18,7 @@ void belt_test(struct Student* student);
 void new_student_batch(struct Student* student_list, int* number_of_students);
 void money_handler(int* dojo_money, int number_of_students);
 
-int main(){
+int main(int argc, char* argv[]){
     int i, j, weeks, months, years;
     int dojo_money = 1000;
     int number_of_students = 5;
@@ -25,6 +26,7 @@ int main(){
     int training_focus = 0; // default to no focus
     char c = ' ';
     struct Student stud_muffin[MAX_STUDENTS1];
+    int student_selection, focus_selection;
     srand((unsigned int)time(NULL));
     for(i = 0; i < number_of_students; i++){ 
         stud_muffin[i] = generate_student();
@@ -33,9 +35,9 @@ int main(){
 
 
 
-    weeks = 0;
-    months = 0;
-    years = 0;
+    weeks = 1;
+    months = 10;
+    years = 1;
     while(c != 'q' && c != 'Q'){
         printf("\nWeeks/Months/Years passed: %d/%d/%d\tMoney: %d€", weeks, months, years, dojo_money);
         printf("\n1. Advance 1 Week");
@@ -79,7 +81,7 @@ int main(){
                     belt_test(&stud_muffin[i]);
                 }
 
-                if(will_they_leave(&stud_muffin[i]) == 1){
+                if((will_they_leave(&stud_muffin[i]) == 1) && (strcmp(argv[1], "--happy-time") != 0)){
                     leave_dojo(stud_muffin, &number_of_students, i);
                 }
             }
@@ -98,14 +100,14 @@ int main(){
                     stud_muffin[i].months_since_previous_test++; 
                     stud_muffin[i].months_at_dojo++;
                 }
-                weeks = 0;
+                weeks = 1;
                 money_handler(&dojo_money, number_of_students);
                 if(dojo_money < 0) months_in_debt++;
                 else months_in_debt = 0;
             }
             /* change year */
-            if(months == 12){
-                months = 0;
+            if(months == 13){
+                months = 1;
                 years++;
                 for(i = 0; i < number_of_students; i++) stud_muffin[i].age++;
             }    
@@ -143,7 +145,6 @@ int main(){
             break;
             case '4':
             /* choose student */
-            int student_selection, focus_selection;
             do{         
                 /* print students' names */
                 for(i = 0; i < number_of_students; i++)

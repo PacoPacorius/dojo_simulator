@@ -399,6 +399,8 @@ Each student pays you 100€ a month. Starting dojo rent is 500€, and
 your initial budget is 1000€. If you are in debt for three months
 straight, your dojo closes and you go bankrupt, GAME OVER! 
 
+/* advertising is not yet implemented
+ */
 Apart from the standard yearly batch of students in September, you can
 advertise to get a few students immediately. Here the options for advertising:
 
@@ -409,3 +411,22 @@ TV & radio ads: 2000€, 2-8 students next week
 This is the only use for money at the moment
 Future uses: participation in events requires a participation fee, the higher
 the event rank, the pricier it is to participate
+
+
+11. events
+-----------
+
+This one's gonna be a long one.
+
+Every 
+
+xx. command line options
+-------------------------
+
+There is one command line option you can pass when running the executable for
+debug purposes.
+
+Specifying --happy-times when running the dojo exec file will stop students
+from leaving your dojo due to morale reasons. A message will nevertheless
+appear claiming that one or more of your students has disappeared, worry not,
+your student is still there, grumpy as hell.
