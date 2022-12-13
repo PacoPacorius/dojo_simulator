@@ -427,6 +427,4 @@ There is one command line option you can pass when running the executable for
 debug purposes.
 
 Specifying --happy-times when running the dojo exec file will stop students
-from leaving your dojo due to morale reasons. A message will nevertheless
-appear claiming that one or more of your students has disappeared, worry not,
-your student is still there, grumpy as hell.
+from leaving your dojo due to morale reasons. 

@@ -81,8 +81,19 @@ int main(int argc, char* argv[]){
                     belt_test(&stud_muffin[i]);
                 }
 
-                if((will_they_leave(&stud_muffin[i]) == 1) && (strcmp(argv[1], "--happy-time") != 0)){
-                    leave_dojo(stud_muffin, &number_of_students, i);
+                /* TRIPLE IF STATEMENT */
+                if(argc > 1){
+                    if(strcmp(argv[1], "--happy-times")){
+                        if((will_they_leave(&stud_muffin[i]) == 1)){
+                            leave_dojo(stud_muffin, &number_of_students, i);
+                        }
+                    }
+                }
+                else{
+                    if((will_they_leave(&stud_muffin[i]) == 1)){
+                        leave_dojo(stud_muffin, &number_of_students, i);
+                    }
+
                 }
             }
 
