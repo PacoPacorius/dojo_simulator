@@ -4,6 +4,8 @@
 
 #include "queue.h"
 
+#define MAX_STUDENTS1   40
+
 #define V_SMALL         1
 #define SMALL           2
 #define LIGHTWEIGHT     3
@@ -90,6 +92,8 @@ int generate_strength(int weight_class, int age);
 int generate_flexibility(int weight_class, int age);
 int generate_stamina(int weight_class, int age);
 void generate_destiny_values(struct Student* stud);
+
+void new_student_batch(struct Student* student_list, int* number_of_students);
 
 void increase_physical_stats(struct Student* stud, int training_focus, int weeks);
 void increase_skill_stats(struct Student* stud, int training_focus, int weeks);

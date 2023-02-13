@@ -665,3 +665,18 @@ void leave_dojo(struct Student* student_list, int* number_of_students, int index
 
 
 }
+
+
+void new_student_batch(struct Student* student_list, int* number_of_students){
+    int new_student_num = rand_lim(4) + 2;
+    int i;
+
+    for(i = 0; i < new_student_num; i++){
+        if(*number_of_students < MAX_STUDENTS1){
+            student_list[*number_of_students] = generate_student("New Student");
+            *number_of_students += 1;
+        }
+
+    }
+
+}

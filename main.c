@@ -3,16 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 #include "queue.h"
 #include "student_generation.h"
-
 
 #define NO_FOCUS        0
 #define STRIKING_FOCUS  1
 #define KICKING_FOCUS   2
 #define HOLDS_FOCUS     3
-
-#define MAX_STUDENTS1   40
 
 #define EXIT 5
 
@@ -23,7 +21,6 @@ struct Time{
 };
 
 void belt_test(struct Student* student);
-void new_student_batch(struct Student* student_list, int* number_of_students);
 void money_handler(int* dojo_money, int number_of_students, int* months_in_debt);
 void menu_handler_advance_week(int* number_of_students, struct Time* date, int* dojo_money, int* months_in_debt, int training_focus, struct Student* stud_muffin, int DBG_happy_times);
 void menu_handler_set_training_focus(int* training_focus);
@@ -192,19 +189,6 @@ void belt_test(struct Student* student){
 }
 
 
-void new_student_batch(struct Student* student_list, int* number_of_students){
-    int new_student_num = rand_lim(4) + 2;
-    int i;
-
-    for(i = 0; i < new_student_num; i++){
-        if(*number_of_students < MAX_STUDENTS1){
-            student_list[*number_of_students] = generate_student("New Student");
-            *number_of_students += 1;
-        }
-
-    }
-
-}
 
 void money_handler(int* dojo_money, int number_of_students, int* months_in_debt){
     printf("\n*** START OF MONTHLY BUDGET CALCULATIONS ***\n");
