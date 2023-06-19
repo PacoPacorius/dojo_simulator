@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 #include "queue.h"
 #include "student_generation.h"
+#include "debug.h"
 
 #define NO_FOCUS        0
 #define STRIKING_FOCUS  1
@@ -73,6 +73,10 @@ int main(int argc, char* argv[]){
             break;
             case 4:
                 menu_handler_show_student_stat_history(number_of_students, stud_muffin);
+            break;
+            case 10:
+                stud_muffin[number_of_students] = dbg_generate_student();
+                number_of_students += 1;
             break;
         }
 

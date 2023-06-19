@@ -1,5 +1,5 @@
 # OBJS are the target source files to compile
-OBJS = main.c student_generation.c queue.c name_generator.c
+OBJS = main.c student_generation.c queue.c name_generator.c debug.c
 
 # Compiler
 CC = gcc
