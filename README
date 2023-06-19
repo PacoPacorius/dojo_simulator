@@ -115,12 +115,6 @@ Modifiers are his hidden destiny value (affinity for the given field) in a perce
 and an age coefficient which is calculated by this formula (and later a training focus
 modifier):
 
-        current_age^2 
-100% - ---------------  AGE IS NOT A FACTOR IN SKILL GAINS ANYMORE, will
-        10000 - 256 
-
-implement decline to due old age later down the road
-
 
 So each time a student trains a physical stat sees an increase:
 
@@ -206,9 +200,9 @@ as one reads to the right.
 
 6. training preference / motivation / personality
 --------------------------------------------------
-Motivation shows how happy a student is with your dojo. A highly motivated
-student will be less likely to leave, but you shouldn't expect an unmotivated
-student to stick around for too long. Motivation naturally decreases over time
+Motivation shows how happy a student is with your dojo. An unmotivated student
+may leave your dojo soon unless you make them happier, a highly will most
+likely stick around. Motivation naturally decreases over time
 (-2 per week?). When a new student arrives they start with a motivation of 50. 
 
 You can increase motivation by setting training focus according to your
@@ -247,9 +241,9 @@ dojo, will be really happy otherwise.
 d. Weeb: Will get happy if your dojo has another weeb in it. Everybody else
 gets sad for each student with Weeb personality.
 
-e. Social: Will gain morale for each other social student you have in your
+e. Social: Will gain morale for each other student you have in your
 dojo. When relationships are implemented, they will be really happy when they
-make friends and really uhnappy when disliked.
+make friends and really unhappy when disliked.
 
 f. Antisocial: Will lose morale for every social student you have in your
 dojo.
@@ -266,17 +260,13 @@ better stats (basically the inverse of jealous personality).
 
 j. Unmotivated: Morale loss for high intensity training, slower stat growth
 
+k. Insecure: Will lose morale for each student who is younger than them.
+
 to implement when relationships are implemented 
-k. Troublemaker: will gain morale if people dislike them, will cause trouble
+l. Troublemaker: will gain morale if people dislike them, will cause trouble
 when implemented.
 
-l. Loner: will lose morale if people like him, will gain morale if they have no
-relationship with the rest of the students.
-
-m. Insecure: will lose morale if they have no realtionships with other
-students (negative relationships count).
-
-n. Socialist: will lose morale if you advertise for new students, will gain
+o. Traditionalist: will lose morale if you advertise for new students, will gain
 morale if there are mentor relationships in the dojo
 
 7. student belt ranks 
@@ -304,8 +294,8 @@ j. red / black belt
 
 k. black belt / 1st dan
 All skills need to be over 40, at least one needs to be over 50 -this will
-when black belts get a makeover, below these values they will generate
-negative effects for the dojo
+be implemented when black belts get a makeover, below these values they 
+will generate negative effects for the dojo
 
 A student can only take a black belt test at least one year after gaining the red / black 
 belt rank and only in January. That makes the maximum possible time to take a
@@ -327,13 +317,14 @@ rank, their motivation will drop rapidly.
 l. black belt / 2nd dan
 Any one skill stat over 70, all skill stats over 50
 Can take test for 2nd dan only after two years after gaining 1st dan rank.
-After 4 years, you can achieve 2nd dan rank only by having any one skill stat
-over 70
+After 2 years, you can take exam for 2nd dan rank only by having any one skill stat
+over 60
 
 m. black belt / 3rd dan
 Any one skill stat over 80, all skill stats over 60
 Can take exam three years after gaining 2nd dan rank.
-After 6 years, you can achieve 
+After 3 years, student can take exam for 3rd dan rank if they have any one
+skill over 70 
 
 n. black belt / 4th dan
 This test requires the student to undergo a teaching course. 
@@ -348,8 +339,6 @@ special student? nahh, just have the player pay to get to higher ranks
 
 8. student leave and new students
 ----------------------------------
-How should I go about this?
-
 As of now, students leave only because of low morale and there is no
 difference between new and old students. Students also have a 1/10000 chance
 to just leave with no explanation. The rest are all future plans:
@@ -364,7 +353,7 @@ chance of just plain giving up and pursuing other passions. Even if they do
 stay, however, black belts are really tough to handle and touchy and if not
 kept happy could jump ship at any time.
 
-If the student's motivation is kept over 80 for an extended period of time
+If the student's motivation is kept over 85 for an extended period of time
 (say two years?), they gain loyalty towards you, which means that it will be
 very rare for them to leave, even if their morale is abysmal. They will never
 give up upon reaching black belt status. (maybe some bonus? maybe sumin extra?

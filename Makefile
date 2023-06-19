@@ -13,3 +13,6 @@ OBJ_NAME = dojo
 # build target
 all: $(OBJS)
 	$(CC) -o $(OBJ_NAME) $(OBJS) $(LINKER_FLAGS)
+
+clean:
+	rm $(OBJ_NAME)
