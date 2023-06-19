@@ -20,7 +20,7 @@ struct Time{
     int years;
 };
 
-void belt_test(struct Student* student);
+void gain_belt_rank(struct Student* student);
 void money_handler(int* dojo_money, int number_of_students, int* months_in_debt);
 void menu_handler_advance_week(int* number_of_students, struct Time* date, int* dojo_money, int* months_in_debt, int training_focus, struct Student* stud_muffin, int DBG_happy_times);
 void menu_handler_set_training_focus(int* training_focus);
@@ -102,11 +102,11 @@ void menu_handler_advance_week(int* number_of_students, struct Time* date, int* 
         /* check to see if it is time for exam, this should be more tidy when I expand it, maybe move some of the ifs inside the function */
         /* in the first week of july or january, if it has been at least 6 months since last test and the student has lower belt rank than red / black belt, belt exams */
         if(stud_muffin[i].months_since_previous_test >= 6 && stud_muffin[i].belt_rank < RED_BLACK_BELT && (date->months == 6 || date->months == 0) && date->weeks == 1 ){
-            belt_test(&stud_muffin[i]);
+            gain_belt_rank(&stud_muffin[i]);
         }
         /* in the first week of january, if it has been at least 12 months since last test and the student has red / black belt rank, belt exams */
         else if(stud_muffin[i].months_since_previous_test >= 12 && stud_muffin[i].belt_rank == RED_BLACK_BELT && date->months == 0 && date->weeks == 1 ){
-            belt_test(&stud_muffin[i]);
+            gain_belt_rank(&stud_muffin[i]);
         }
 
         if((will_they_leave(&stud_muffin[i]) == 1 && DBG_happy_times == 0)){
@@ -138,7 +138,8 @@ void menu_handler_advance_week(int* number_of_students, struct Time* date, int* 
         for(i = 0; i < *number_of_students; i++) stud_muffin[i].age++;
     }    
 }
-void belt_test(struct Student* student){
+
+void gain_belt_rank(struct Student* student){
     student->months_since_previous_test = 0;
     student->belt_rank++;
     if(student->motivation + 10 < 100) student->motivation += 10;
@@ -146,7 +147,7 @@ void belt_test(struct Student* student){
 
     /* this is additive to the previous motivation boost */
     if(student->belt_rank == DAN_1ST){
-        if(student->motivation + 30 < 100) student->motivation += 30;
+        if(student->motivation + 20 < 100) student->motivation += 20;
         else student->motivation = 100;
     }
     
@@ -275,8 +276,7 @@ void menu_handler_show_student_stat_history(int number_of_students, struct Stude
         scanf("%d", &student_selection);
         getchar();
     } while(student_selection < -1 || student_selection > number_of_students - 1);
-    /* quick and dirty int <-> char conversion ±'0'*/
-    //i = c - '0';
+
     if(student_selection == -1) return;
 
     /* choose stat */
