@@ -63,6 +63,8 @@ int main(int argc, char* argv[]){
         /* user input and menu handling */
         switch(c){
             case 1:
+                if(months_in_debt > 0)
+                    printf("\nMonths In Debt: %d", months_in_debt);
                 menu_handler_advance_week(&number_of_students, &date, &dojo_money, &months_in_debt, training_focus, stud_muffin, DBG_happy_times);
             break;
             case 2:
@@ -78,9 +80,18 @@ int main(int argc, char* argv[]){
                 stud_muffin[number_of_students] = dbg_generate_student();
                 number_of_students += 1;
             break;
+            case 11:
+                dbg_remove_student(stud_muffin, &number_of_students);
+            break;
+            case 12:
+                printf("\nAdd how much money? (debug) ");
+                scanf("%d", &j);
+                dojo_money += j;
+                j = 0;
+            break;
         }
 
-        if(months_in_debt == 3){
+        if(months_in_debt > 3){
             printf("\nYour dojo has gone bankrupt! GAME OVER!\n");
             c = EXIT;
         }
@@ -211,8 +222,12 @@ void money_handler(int* dojo_money, int number_of_students, int* months_in_debt)
     printf("\n====================================");
     printf("\n\n*** END OF MONTHLY BUDGET CALCULATIONS ***");
 
-    if(*dojo_money < 0) months_in_debt++;
-    else months_in_debt = 0;
+    if(*dojo_money < 0){
+       *months_in_debt += 1;
+    }
+    else if(*dojo_money > 0){
+       *months_in_debt = 0;
+    }
 }
 
 void menu_handler_set_training_focus(int* training_focus){

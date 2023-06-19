@@ -273,14 +273,30 @@ int generate_strength(int weight_class, int age){
 }
 
 void generate_destiny_values(struct Student* stud){
-    stud->destiny_agility = get_gaussdist_number(30, 100);
-    stud->destiny_flexibility = get_gaussdist_number(30, 100);
-    stud->destiny_strength = get_gaussdist_number(30, 100);
-    stud->destiny_stamina = get_gaussdist_number(30, 100);
+    /* generate physical stats */
+    do{
+        stud->destiny_agility = get_gaussdist_number(30, 100);
+    } while(stud->destiny_agility < stud->agility);
+    do{
+        stud->destiny_flexibility = get_gaussdist_number(30, 100);
+    } while(stud->destiny_flexibility < stud->flexibility);
+    do{
+        stud->destiny_strength = get_gaussdist_number(30, 100);
+    } while(stud->destiny_strength < stud->strength);
+    do{
+        stud->destiny_stamina = get_gaussdist_number(30, 100);
+    } while(stud->destiny_stamina < stud->stamina);
 
-    stud->destiny_striking = get_gaussdist_number(30, 100);
-    stud->destiny_kicking = get_gaussdist_number(30, 100);
-    stud->destiny_holds = get_gaussdist_number(30, 100);
+
+    do{
+        stud->destiny_striking = get_gaussdist_number(30, 100);
+    } while(stud->destiny_striking < stud->striking);
+    do{
+        stud->destiny_kicking = get_gaussdist_number(30, 100);
+    } while(stud->destiny_kicking < stud->kicking);
+    do{
+        stud->destiny_holds = get_gaussdist_number(30, 100);
+    } while(stud->destiny_holds < stud->holds);
     
     /* add body type bonuses / penalties */
 }
