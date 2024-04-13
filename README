@@ -410,8 +410,11 @@ This one's gonna be a long one.
 Every March, events are held. You can register a student of yours to
 participate in an event during the months August-December by paying the
 event's participation fee. (Each event will contain a stack with the students
-that will be participating in it). Events are split into categories by skill:
-Striking, Kicking, Holds.
+that will be participating in it). 
+
+Events are split into categories by skill: Striking, Kicking, Holds. 
+They are also split in two difficulty levels: Intermediate and Master.
+Radom generated number that has to be over 60 is student's performance.
 
 (Events being held in March are temporary, they will be held in different
 dates depending on the event, but you will still have to register your student
@@ -427,3 +430,43 @@ debug purposes.
 
 Specifying --happy-times when running the dojo exec file will stop students
 from leaving your dojo due to morale reasons. 
+
+
+xx. project lateral movement
+----------------------------
+
+Transition from this being a general martial arts game to it being a sumo game.
+
+Pros:
+1. Introduction of decision-making during fights/events, better gameplay loop.
+2. Solves the problem of how events will play out.
+3. Stats make more sense in a rock-paper-scissors type of way.
+4. Advanced strategy training adds one more layer in training. 
+5. Pre-defined divisions, more clear-cut goals.
+
+Cons:
+1. Makes belt ranks obsolete and useless.
+2. Will have to generate/design hundreds of sumo wrestlers.
+3. Will have to figure out how advancing up the ranks works.
+4. Will have to rework most of the stats.
+
+Conclusion: Make the changes but in a separate git branch, better have something
+to fall back to if everything goes wrong.
+
+Every sumo has three stats, pushing, grappling, dodging (maybe a stat for the
+tachiai?). At the start of a tournament a sumo will choose 3 strategies that
+will have one of their three stats as a base stat.  Pushing beats grappling,
+grappling beats dodging and dodging beats pushing, just like rock paper
+scissors. Some advanced strategies may have one base and one secondary stat.
+
+A sumo chooses between one out of three strategies at the start of each
+bout. They don't know what their opponent will choose, but know their 3
+available options. If they are facing them for the first time, they only know
+their stats in approximation. A sumo can change their strategy mid-bout,
+but that will give a penalty to their physical wear-and-tear and they will
+receive a slight penalty to their stats for the rest of the match.
+
+Between each tournament, a sumo has a chance to train. They can choose to
+improve a stat or invest in a new advanced strategy. At higher divisions,
+you will only see advanced strategies.
+

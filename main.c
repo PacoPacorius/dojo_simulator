@@ -6,6 +6,7 @@
 #include "queue.h"
 #include "student_generation.h"
 #include "debug.h"
+#include "match.h"
 
 #define NO_FOCUS        0
 #define STRIKING_FOCUS  1
@@ -20,6 +21,7 @@ struct Time{
     int years;
 };
 
+
 void gain_belt_rank(struct Student* student);
 void money_handler(int* dojo_money, int number_of_students, int* months_in_debt);
 void menu_handler_advance_week(int* number_of_students, struct Time* date, int* dojo_money, int* months_in_debt, int training_focus, struct Student* stud_muffin, int DBG_happy_times);
@@ -27,6 +29,8 @@ void menu_handler_set_training_focus(int* training_focus);
 void menu_handler_show_all_students_stats(int number_of_students, struct Student* stud_muffin);
 void menu_handler_show_student_stat_history(int number_of_students, struct Student* stud_muffin);
 void print_main_menu(struct Time* date, int dojo_money);
+struct Student* student_select(struct Student);
+
 
 int main(int argc, char* argv[]){
     int i, j;
@@ -88,6 +92,19 @@ int main(int argc, char* argv[]){
                 scanf("%d", &j);
                 dojo_money += j;
                 j = 0;
+            break;
+            case 13:
+                // debug match
+                do{
+                    for(i = 0; i < number_of_students; i++)
+                        printf("\n%d. %s", i, stud_muffin[i].name);
+                    printf("\nPress -1 to go back to the main menu...\n");
+                    printf("\nWhich student will participate in a match? ");
+                    scanf("%d", &i);
+                    getchar();
+                } while(i < -1 || i > number_of_students - 1);
+                if(i != -1)
+                    start_match(&stud_muffin[i]);
             break;
         }
 
@@ -331,5 +348,6 @@ void print_main_menu(struct Time* date, int dojo_money){
         printf("\n10. (Debug) Add new student");
         printf("\n11. (Debug) Remove student");
         printf("\n12. (Debug) Add money");
+        printf("\n13. Participate in match");
         printf("\nWhat do? ");
 }

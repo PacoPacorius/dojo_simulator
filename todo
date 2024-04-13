@@ -1,10 +1,13 @@
 debug tools!
 
-10. Add new student
-11. Remove student
-12. Add money
+10. Add new student -partly done, finish up
+11. Remove student -done
+12. Add money -done
 
 events
+performance based on equation which depends on student skill and luck
+
+-master events:
 
 training intensity 
 
