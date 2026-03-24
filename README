@@ -4,9 +4,10 @@ Train martial arts athletes wrestlers! Participate in bashos! Challenge
 other dojos! Handle big egos and drama! Manage the best dojo in the world! 
 NEVER GIVE UP YOUR WAYYYYYYYYYYYYYYY!
 
-kind-of wiki of things currently implemented
+kind-of wiki of things currently implemented and future plans.
 
-Compile with "make all"
+Compile with "make all" for Linux, no dependencies yet besides gcc and 
+standard libraries.
 
 
 Game flow:
