@@ -1,11 +1,18 @@
 debug tools!
 
-10. Add new student -partly done, finish up
-11. Remove student -done
-12. Add money -done
+10. Add new student -partly done, finish up -- what do I have to do? It 
+    seems fine to me.
 
 events
-performance based on equation which depends on student skill and luck
+Rock paper scissors between striking kicking and grappling. Person
+who chose skill that is weak gets a -25% debuff maybe add some randomness, 
+motivation and physical stat metrics as well. Skill selection of opponent 
+is unknown to both AI and player, although AI may prioritise to choose the
+skill they are most skilled in, or in later stages pick the skills 
+decide based on the skills you are in weak in too. Kicking can give you a
+critical strike to knock out opponent immediately, grappling only gets
+a -20% debuff when it's weak to other stats, striking? second wind? 
+more experience gain during matches?
 
 -master events:
 
@@ -13,13 +20,16 @@ training intensity
 
 more personality
 
-advertising (either before or after personality, make dojo start with 0 students and to have to advertise, give less students each September)
+advertising (either before or after personality, make dojo start with 0
+students and to have to advertise, give less students each September)
 
 stat history, training focus & intensity history
+plot stat history for each student with gnuplot.
 
-sdl ui
+sdl, ncurses, X11, xclass ui
 
-polish student leave mechanic (volatile first few months, more stable as time goes on, loyalty)
+polish student leave mechanic (volatile first few months, more stable as
+time goes on, loyalty)
 
 *** Known bugs ***
 1. you can never lose due to bankruptcy

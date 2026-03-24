@@ -1,7 +1,7 @@
 Dojo Simulator!
 
-Train martial arts athletes wrestlers! Participate in bashos! Challenge other dojos! Handle big 
-egos and drama! Manage the best dojo in the world! 
+Train martial arts athletes wrestlers! Participate in bashos! Challenge
+other dojos! Handle big egos and drama! Manage the best dojo in the world! 
 NEVER GIVE UP YOUR WAYYYYYYYYYYYYYYY!
 
 kind-of wiki of things currently implemented
@@ -10,59 +10,61 @@ Compile with "make all"
 
 
 Game flow:
-gdvertise -> gradually gain new martial arts athletes wrestlers who pay a monthly fee -> 
-choose focus for each training session / each week -> martial arts athletes wrestlers get better ->
-exam to get new belt / participate in martial arts events -> martial arts athletes wrestlers may
-eventually leave -> new martial arts athletes wrestlers
+gdvertise -> gradually gain new martial arts athletes wrestlers who pay a
+monthly fee -> choose focus for each training session / each week -> martial
+arts athletes wrestlers get better -> exam to get new belt / participate in
+martial arts events -> martial arts athletes wrestlers may eventually leave 
+-> new martial arts athletes wrestlers
 
 1. skills
 ----------
 
 each martial arts athletes wrestler has skill stats:
 
-1. thrusting 
+1. kicking
 2. grappling
 3. dodging
-4. tachiai
 
 (thrusting beats grappling, grappling beats dodging, dodging beats thrusting)
 
-		   dodging
+		   kicking
 			/	[
 		   /	 \
 		  /		  \
 		 /		   \
 		[			\
-thrusting -------> grappling
+grappling ------> dodging
 
 High tachiai stat gives a bonus at the start of each match.
 
 
 and physical stats that correspond to skill stats:
 1. agility (dodging)
-2. strength (thrusting)
-3. balance (mostly grappling)
-4. Height
+2. strength (kicking)
+3. flexiblity (grappling)
+4. height
+5. stamina (martial artist is affected if a match goes on for too long?)
 
 
-How do physical and skill stats relate to each other? A wrestler can be good at
-dodging without necessarily being very agile, although that may put a cap on
-their skill eventually. Grappling-balance, thrusting-strength work the same way.
+How do physical and skill stats relate to each other? A wrestler can be
+good at dodging without necessarily being very agile, although that may
+put a cap on their skill eventually. Grappling-flexibility, strength-kicking
+work the same way.
 
 Height determines starting stat values and has bonuses or penalties
 on a martial arts athletes wrestler's destiny values (see below). Tall 
 wrestlers are usually naturally much stronger than shorter wrestlers, while
-shorter wrestlers are more agile. (Not implemented) Balance is affected by the 
-ratio of weight to height, there is a sweet spot where the destiny value of 
-balance is maximum.
+shorter wrestlers are more agile. (Not implemented) Balance is affected by 
+the ratio of weight to height, there is a sweet spot where the destiny 
+value of balance is maximum.
 
 Misc. physical stats:
 1. Fatigue (high fatigue may lead to injury) -not implemented yet
 
 Hidden / personality stats:
-1. Motivation (if it gets too low, the wrestler might leave the dojo, if it 
-remains high for a long time, the martial arts athletes wrestler might get a loyalty status ???)
- -not implemented yet
+1. Motivation (if it gets too low, the wrestler might leave the dojo,
+    if it remains high for a long time, the martial arts athletes wrestler
+    might get a loyalty status ??? - loyalty not implemented yet)
 2. Personality (determines when motivation goes up or down) -not implemented
 yet
 3. Destiny values for stats (natural affinity and potential for stats)
@@ -131,13 +133,15 @@ SHeavy  |   30-60       40-70       20-50
 3. progression of stats
 -------------------------
 Physical stats;
-Each time a martial arts athletes wrestler trains on a physical stat, he gains a clear 0.1 point before the modifiers. 
-Modifiers are his hidden destiny value (affinity for the given field) in a percentage
-and an age coefficient which is calculated by this formula (and later a training focus
+Each time a martial arts athletes wrestler trains on a physical stat, he
+gains a clear 0.1 point before the modifiers.  Modifiers are his hidden
+destiny value (affinity for the given field) in a percentage and an age
+coefficient which is calculated by this formula (and later a training focus
 modifier):
 
 
-So each time a martial arts athletes wrestler trains a physical stat sees an increase:
+So each time a martial arts athletes wrestler trains a physical stat sees
+an increase:
 
 destiny_value_coefficient = ((destiny_value - (current_value - 20)) / 100)
 
@@ -180,8 +184,9 @@ Focus on e.g. kicking: x1.5 modifier on kicking, x0.5 modifier on everything els
 
 Focus is applied on one week only, on all three training sessions
 
-Focus will affect martial arts athletes wrestler motivation depending on their personality. Some sumo wrestlers 
-might like kicking focus, cardio, or higher intensity training and if you go too
+Focus will affect martial arts athletes wrestler motivation depending on
+their personality. Some sumo wrestlers might like kicking focus, cardio,
+or higher intensity training and if you go too
 long without their preference they will lose motivation.
 
 Three main categories:
@@ -189,10 +194,10 @@ Three main categories:
 2. Kicking
 3. Holds
 
-To implement in the future (only basic focuses and no focus are in the game):
-You can upgrade your training focus for more efficient training by paying some
-money and taking coach courses. For levels over Advanced you can only advance
-through random special events
+To implement in the future (only basic focuses and no focus are in the
+game): You can upgrade your training focus for more efficient training by
+paying some money and taking coach courses. For levels over Advanced you
+can only advance through random special events
 
 Striking |  Basic Striking  |   x1.25 striking, x0.75 strength, x0.5 everything else
          |  Inter. Strik.   |   x1.25 striking, x1 strength, x0.5 everything else
@@ -210,10 +215,11 @@ No Focus: x0.75 to all stats
 
 5. stat history
 -----------------
-During the first week of every month, all stat increases of the last training
-of the week are saved. You can view these later in order to determine the rate 
-of growth of your martial arts athletes wrestlers. Only the 60 previous stat increases are saved, meaning 
-stat increases older than 5 years will be erased. 
+During the first week of every month, all stat increases of the last
+training of the week are saved. You can view these later in order to
+determine the rate of growth of your martial arts athletes wrestlers. Only
+the 60 previous stat increases are saved, meaning stat increases older
+than 5 years will be erased.
 
 As of right now, the leftmost value is the oldest one, going to newer values
 as one reads to the right. 
@@ -221,29 +227,33 @@ as one reads to the right.
 
 6. training preference / motivation / personality
 --------------------------------------------------
-Motivation shows how happy a martial arts athletes wrestler is with your dojo. An unmotivated sumo wrestler
-may leave your dojo soon unless you make them happier, a highly will most
-likely stick around. Motivation naturally decreases over time
-(-2 per week?). When a new martial arts athletes wrestler arrives they start with a motivation of 50. 
+Motivation shows how happy a martial arts athletes wrestler is with your
+dojo. An unmotivated sumo wrestler may leave your dojo soon unless you
+make them happier, a highly motivated marital artist will most likely 
+stick around. Motivation naturally decreases over time (-2 per week?). 
+When a new martial arts athletes wrestler arrives they start with a 
+motivation of 50.
 
 You can increase motivation by setting training focus according to your
-martial arts athletes wrestlers' training preference. Training preferences are:
+martial arts athletes wrestlers' training preference. Training preferences 
+are:
 
 1. Kicking
-2. Striking
-3. Holds
+2. Dodging
+3. Grappling
 4. General
 5. None 
 
-If e.g. a martial arts athletes wrestler has a training preference for kicking and they participate in
-training with kicking focus enabled, they will gain +5 motivation (can only
-gain motivation this way once per week). Students with a general training 
-preference like training with no focus and martial arts athletes wrestlers with no preference will
-gain +0.25 motivation per week regardless.
+If e.g. a martial arts athletes wrestler has a training preference for
+kicking and they participate in training with kicking focus enabled,
+they will gain +5 motivation (can only gain motivation this way once per
+week). Students with a general training preference like training with no
+focus and martial arts athletes wrestlers with no preference will gain
++0.25 motivation per week regardless.
 
 Right now training preference is generated to be completely random. When
-personalities get added, it may be generated by the martial arts athletes wrestler's personality
-(depending on what I settle on till then).
+personalities get added, it may be generated by the martial arts athletes
+wrestler's personality (depending on what I settle on till then).
 
 Personalities also affect morale
 Personalities:
@@ -318,28 +328,31 @@ All skills need to be over 40, at least one needs to be over 50 -this will
 be implemented when black belts get a makeover, below these values they 
 will generate negative effects for the dojo
 
-A martial arts athletes wrestler can only take a black belt test at least one year after gaining the red / black 
-belt rank and only in January. That makes the maximum possible time to take a
-test for the black belt 1.5 years and the minimum 1 year.
+A martial arts athletes wrestler can only take a black belt test at least
+one year after gaining the red / black belt rank and only in January. That
+makes the maximum possible time to take a test for the black belt 1.5
+years and the minimum 1 year.
 
-Each time a martial arts athletes wrestler climbs in rank, they get a +10 boost in motivation. An
-exception to this is gaining the black belt rank, which gets them +30 motivation.
+Each time a martial arts athletes wrestler climbs in rank, they get a +10
+boost in motivation. An exception to this is gaining the black belt rank,
+which gets them +30 motivation.
 
 (below ranks are not implemented yet)
-Either hard limits to gain next rank or give the decision to the player on who to 
-advance to the black belt rank. Black belts will be highly influential to the dojo's 
-reputation depending on their skill (the higher the dan rank, the more pronounced the
-effects) and will also help younger martial arts athletes wrestlers develop quicker, take on
-proteges, defend your dojo's honour against rival dojo attacks, etc. Black belts 
-that aren't skilled enough will have a big negative impact on your dojo's reputation. 
-If you choose not to award a martial arts athletes wrestler a black belt, or delay their advance in
-rank, their motivation will drop rapidly.
+Either hard limits to gain next rank or give the decision to the player
+on who to advance to the black belt rank. Black belts will be highly
+influential to the dojo's reputation depending on their skill (the higher
+the dan rank, the more pronounced the effects) and will also help younger
+martial arts athletes wrestlers develop quicker, take on proteges, defend
+your dojo's honour against rival dojo attacks, etc. Black belts that aren't
+skilled enough will have a big negative impact on your dojo's reputation.
+If you choose not to award a martial arts athletes wrestler a black belt,
+or delay their advance in rank, their motivation will drop rapidly.
 
 l. black belt / 2nd dan
 Any one skill stat over 70, all skill stats over 50
 Can take test for 2nd dan only after two years after gaining 1st dan rank.
-After 2 years, you can take exam for 2nd dan rank only by having any one skill stat
-over 60
+After 2 years, you can take exam for 2nd dan rank only by having any one
+skill stat over 60.
 
 m. black belt / 3rd dan
 Any one skill stat over 80, all skill stats over 60
@@ -358,36 +371,40 @@ the region's most prestigious dojo. -idea, implement player character as a
 special martial arts athletes wrestler? nahh, just have the player pay to get to higher ranks
 
 
-8. martial arts athletes wrestler leave and new sumo wrestlers
+8. martial arts athletes wrestler leave and new martial artists
 ----------------------------------
-As of now, martial arts athletes wrestlers leave only because of low morale and there is no
-difference between new and old martial arts athletes wrestlers. Students also have a 1/10000 chance
-to just leave with no explanation. The rest are all future plans:
+As of now, martial arts athletes wrestlers leave only because of low
+morale and there is no difference between new and old martial arts
+athletes wrestlers. Students also have a 1/10000 chance to just leave
+with no explanation. The rest are all future plans:
 
-The first six months should be very volatile. The six months after that also,
-but not as much. New martial arts athletes wrestlers are much harder to please, negative morale effects
-are huge and so they may leave at a moment's notice. After that, it's mostly 
-smooth sailing till the black belt.
+The first six months should be very volatile. The six months after that
+also, but not as much. New martial arts athletes wrestlers are much harder
+to please, negative morale effects are huge and so they may leave at a
+moment's notice. After that, it's mostly smooth sailing till the black belt.
 
-Upon gaining the black belt, martial arts athletes wrestlers, depending on their personality, have a
-chance of just plain giving up and pursuing other passions. Even if they do
-stay, however, black belts are really tough to handle and touchy and if not
-kept happy could jump ship at any time.
+Upon gaining the black belt, martial arts athletes wrestlers, depending
+on their personality, have a chance of just plain giving up and pursuing
+other passions. Even if they do stay, however, black belts are really
+tough to handle and touchy and if not kept happy could jump ship at any time.
 
-If the martial arts athletes wrestler's motivation is kept over 85 for an extended period of time
-(say two years?), they gain loyalty towards you, which means that it will be
-very rare for them to leave, even if their morale is abysmal. They will never
-give up upon reaching black belt status. (maybe some bonus? maybe sumin extra?
-maybe give the dojo more prestige or somethin i dunno)
+If the martial arts athletes wrestler's motivation is kept over 85 for
+an extended period of time (say two years?), they gain loyalty towards
+you, which means that it will be very rare for them to leave, even if
+their morale is abysmal. They will never give up upon reaching black belt
+status. (maybe some bonus? maybe sumin extra?  maybe give the dojo more
+prestige or somethin i dunno)
 
-There is a small possibility that martial arts athletes wrestlers leave regardless of what you do due
-to major changes in their life like changing where they live, a massive
-injury, having kids etc. It's just the unfair way life works, I guess.
+There is a small possibility that martial arts athletes wrestlers leave
+regardless of what you do due to major changes in their life like changing
+where they live, a massive injury, having kids etc. It's just the unfair
+way life works, I guess.
 
-New martial arts athletes wrestlers will be determined by the dojo's prestige, but I think a good
-number is 2-6 new martial arts athletes wrestlers every year. I should probably not worry about this
-too much, though, need to implement martial arts athletes wrestler leave to work out the numbers
-well.
+New martial arts athletes wrestlers will be determined by the dojo's
+prestige, but I think a good number is 2-6 new martial arts athletes
+wrestlers every year. I should probably not worry about this too much,
+though, need to implement martial arts athletes wrestler leave to work
+out the numbers well.
 
 
 
@@ -397,17 +414,18 @@ low intensity: x0.75 modifier to all stat gains
 medium intensity: x1 modifier to all stat gains
 high intensity: x1.25 modifier to all stat gains
 
-Intensity will affect martial arts athletes wrestler motivation depending on their personality. 
-High intensity training will also increase martial arts athletes wrestler fatigue quicker and 
-will increase risk of injury. (fatigue and injuries not implemented yet).
+Intensity will affect martial arts athletes wrestler motivation depending on
+their personality.  High intensity training will also increase martial arts
+athletes wrestler fatigue quicker and will increase risk of injury. (fatigue
+and injuries not implemented yet).
 
 10. money handling / advertising
 ---------------------------------
 Money makes the world go round.
 
-Each martial arts athletes wrestler pays you 100€ a month. Starting dojo rent is 500€, and
-your initial budget is 1000€. If you are in debt for three months
-straight, your dojo closes and you go bankrupt, GAME OVER! 
+Each martial arts athletes wrestler pays you 100€ a month. Starting dojo
+rent is 500€, and your initial budget is 1000€. If you are in debt
+for three months straight, your dojo closes and you go bankrupt, GAME OVER!
 
 /* advertising is not yet implemented
  */
@@ -419,8 +437,9 @@ Billboards & Newspaper ads: 800€, 0-6 martial arts athletes wrestlers next wee
 TV & radio ads: 2000€, 2-8 martial arts athletes wrestlers next week
 
 This is the only use for money at the moment
-Future uses: participation in events requires a participation fee, the higher
-the event rank, the pricier it is to participate
+Future uses: participation in events requires a participation fee, the
+higher the event rank, the pricier it is to participate. Placing high in
+tournaments gives you prize money.
 
 
 11. events
@@ -428,18 +447,20 @@ the event rank, the pricier it is to participate
 
 This one's gonna be a long one.
 
-Every March, events are held. You can register a martial arts athletes wrestler of yours to
-participate in an event during the months August-December by paying the
-event's participation fee. (Each event will contain a stack with the martial arts athletes wrestlers
-that will be participating in it). 
+Every March, events are held. You can register a martial arts athletes
+wrestler of yours to participate in an event during the months
+August-December by paying the event's participation fee. (Each event
+will contain a stack with the martial arts athletes wrestlers that will
+be participating in it).
 
-Events are split into categories by skill: Striking, Kicking, Holds. 
+Events are split into categories by skill: Striking, Kicking, Holds.
 They are also split in two difficulty levels: Intermediate and Master.
-Radom generated number that has to be over 60 is martial arts athletes wrestler's performance.
+Radom generated number that has to be over 60 is martial arts athletes
+wrestler's performance.
 
 (Events being held in March are temporary, they will be held in different
-dates depending on the event, but you will still have to register your martial arts athletes wrestler
-months in advance)
+dates depending on the event, but you will still have to register your
+martial arts athletes wrestler months in advance)
 
 Event performance:
 
@@ -449,57 +470,68 @@ xx. command line options
 There is one command line option you can pass when running the executable for
 debug purposes.
 
-Specifying --happy-times when running the dojo exec file will stop martial arts athletes wrestlers
-from leaving your dojo due to morale reasons. 
+Specifying --happy-times when running the dojo exec file will stop martial
+arts athletes wrestlers from leaving your dojo due to morale reasons.
 
 
 xx. project lateral movement
 ----------------------------
 
-Transition from this being a general martial arts game to it being a martial arts athletes game.
+Transition from this being a general martial arts game to it being a
+martial arts athletes game.
 
 Pros:
-1. Introduction of decision-making during fights/events, better gameplay loop.
+1. Introduction of decision-making during fights/events, better gameplay
+    loop.
 2. Solves the problem of how events will play out.
 3. Stats make more sense in a rock-paper-scissors type of way.
 4. Advanced strategy training adds one more layer in training. 
 5. Pre-defined divisions, more clear-cut goals.
 
 Cons:
-1. Makes belt ranks obsolete and useless.
+1. Makes belt ranks obsolete and useless. Not really, black belts are 
+    representatives of your dojos and creates a hierarchy with people with
+    more and less influence on the dojo. Dojo Reputation is tied to black
+    belts, but also black belts may disagree with you. This is tough to 
+    implement though and is only a far future implementation.
 2. Will have to generate/design hundreds of martial arts athletes wrestlers.
-3. Will have to figure out how advancing up the ranks works.
-4. Will have to rework most of the stats.
+    Or just have most of the tournament rival athletes randomly generated.
+3. Will have to figure out how advancing up the ranks works. --what do I 
+    mean by this?
+4. Will have to rework most of the stats. --nope.
 
-Conclusion: Make the changes but in a separate git branch, better have something
-to fall back to if everything goes wrong.
 
-Every athlete has three stats, pushing, grappling, dodging (maybe a stat for the
-tachiai?). At the start of a tournament a martial arts athletes will choose 3 strategies that
-will have one of their three stats as a base stat.  Pushing beats grappling,
-grappling beats dodging and dodging beats pushing, just like rock paper
-scissors. Some advanced strategies may have one base and one secondary stat.
+Every athlete has three stats, pushing, grappling, dodging (maybe a stat
+for the tachiai?). At the start of a tournament a martial arts athletes
+will choose 3 strategies that will have one of their three stats as a
+base stat.  Pushing beats grappling, grappling beats dodging and dodging
+beats pushing, just like rock paper scissors. Some advanced strategies
+may have one base and one secondary stat.
 
-A martial arts athletes chooses between one out of three strategies at the start of each
-bout. They don't know what their opponent will choose, but know their 3
-available options. If they are facing them for the first time, they only know
-their stats in approximation. A martial arts athletes can change their strategy mid-bout,
-but that will give a penalty to their physical wear-and-tear and they will
-receive a slight penalty to their stats for the rest of the match.
+A martial arts athletes chooses between one out of three strategies at
+the start of each bout. They don't know what their opponent will choose,
+but know their 3 available options. If they are facing them for the first
+time, they only know their stats in approximation (let's not do that for 
+now). A martial arts athletes
+can change their strategy mid-bout, but that will give a penalty to their
+physical wear-and-tear and they will receive a slight penalty to their
+stats for the rest of the match.
 
-Between each tournament, a martial arts athletes has a chance to train. They can choose to
-improve a stat or invest in a new advanced strategy. At higher divisions,
-you will only see advanced strategies.
+Between each tournament, a martial arts athletes has a chance to train. They
+can choose to improve a stat or invest in a new advanced strategy. At
+higher divisions, you will only see advanced strategies.
 
 --------------------------------------------------------------
 
 In tournaments, you go up against opponents. There may be 1 or 3 rounds.
-In the start of each round, you select one of three stats that function 
-as rock-paper scissors. Rock gets +10 boost over scissors etc. If you select
-the same stat, higher number wins. Opponent
-stats have fog of war applied to them. You can upgrade your scouting by
-investing money. Low stamina might incur penalties if you fight many 
-matches in a tournament or if it goes multiple rounds. If you win a 
-tournament, you advance to a tougher tournament. Tournaments yield prize 
-money and more popularity for your gym, meaning more sponsors and more
-recruits.
+In the start of each round, you select one of three stats that function
+as rock-paper scissors. Rock gets +10 boost over scissors etc. If you
+select the same stat, higher number wins. Opponent stats may have fog of war
+applied to them. You can upgrade your scouting by investing money. Low
+stamina might incur penalties if you fight many matches in a tournament
+or if it goes multiple rounds. If you win a tournament, you advance to
+a tougher tournament. Tournaments yield prize money and more popularity
+for your gym, meaning more sponsors and more recruits.
+
+
+Finally I have a clearly defined game loop.
